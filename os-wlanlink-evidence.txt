@@ -1,0 +1,1 @@
+v2|time=2026-09-26 17:22:58|wakeTime=2026-09-26 17:22:54|class=LINK_INTACT|why=|ssid=meiyoumima_5G|bssid=c8:bf:4c:ef:cf:bc|preSSID=meiyoumima_5G|preBSSID=c8:bf:4c:ef:cf:bc|gw=192.168.0.10|gwMs=62|ev=

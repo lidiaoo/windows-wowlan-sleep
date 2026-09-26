@@ -1,0 +1,50 @@
+﻿2026-09-26 07:40:51  listener started pid=40972 mac=28D0EA27400C ports=9,7,45678
+2026-09-26 07:41:09  listener started pid=15120 mac=28D0EA27400C ports=9,7,45678
+2026-09-26 07:41:17  DETECTED kind=magic src=127.0.0.1:54188 len=102
+2026-09-26 07:41:21  DETECTED kind=marker src=127.0.0.1:53746 len=22
+2026-09-26 08:06:33  listener started pid=35236 mac=28D0EA27400C ports=9,7,45678
+2026-09-26 08:06:38  DETECTED kind=magic src=127.0.0.1:63000 len=102
+2026-09-26 08:08:48  listener started pid=41932 mac=28D0EA27400C ports=9,7,45678
+2026-09-26 08:08:54  DETECTED kind=magic src=127.0.0.1:51101 len=102
+2026-09-26 08:14:51  listener started pid=35552 mac=28D0EA27400C ports=9,7,45678
+2026-09-26 08:21:38  exit: another listener instance already owns the mutex
+2026-09-26 08:21:46  DETECTED kind=magic src=127.0.0.1:62361 len=102
+2026-09-26 08:22:50  exit: another listener instance already owns the mutex
+2026-09-26 08:24:50  exit: another listener instance already owns the mutex
+2026-09-26 08:26:50  exit: another listener instance already owns the mutex
+2026-09-26 08:27:10  exit: another listener instance already owns the mutex
+2026-09-26 08:27:18  DETECTED kind=magic src=127.0.0.1:49395 len=102
+2026-09-26 08:28:50  exit: another listener instance already owns the mutex
+2026-09-26 08:28:52  exit: another listener instance already owns the mutex
+2026-09-26 08:29:00  DETECTED kind=magic src=127.0.0.1:63542 len=102
+2026-09-26 08:30:50  exit: another listener instance already owns the mutex
+2026-09-26 08:32:51  exit: another listener instance already owns the mutex
+2026-09-26 08:34:51  exit: another listener instance already owns the mutex
+2026-09-26 08:36:52  exit: another listener instance already owns the mutex
+2026-09-26 08:38:52  exit: another listener instance already owns the mutex
+2026-09-26 08:43:14  DETECTED kind=magic src=192.168.0.248:59666 len=102
+2026-09-26 08:43:17  DETECTED kind=magic src=192.168.0.248:59666 len=102
+2026-09-26 08:43:17  DETECTED kind=magic src=192.168.0.248:59666 len=102
+2026-09-26 08:43:18  exit: another listener instance already owns the mutex
+2026-09-26 08:43:19  exit: another listener instance already owns the mutex
+2026-09-26 08:44:52  exit: another listener instance already owns the mutex
+2026-09-26 08:46:51  exit: another listener instance already owns the mutex
+2026-09-26 08:48:51  exit: another listener instance already owns the mutex
+2026-09-26 08:50:51  exit: another listener instance already owns the mutex
+2026-09-26 08:52:52  exit: another listener instance already owns the mutex
+2026-09-26 08:54:52  exit: another listener instance already owns the mutex
+2026-09-26 08:56:51  exit: another listener instance already owns the mutex
+2026-09-26 08:58:51  exit: another listener instance already owns the mutex
+2026-09-26 09:00:14  listener started pid=8096 mac=28D0EA27400C ports=9,7,67,68,45678
+2026-09-26 09:00:21  DETECTED kind=magic src=127.0.0.1:51969 len=102
+2026-09-26 09:00:24  DETECTED kind=magic src=192.168.0.215:58618 len=102
+2026-09-26 09:00:27  DETECTED kind=marker src=127.0.0.1:58619 len=19
+2026-09-26 09:20:25  DETECTED kind=magic src=192.168.0.248:33518 len=102
+2026-09-26 09:32:17  DETECTED kind=magic src=192.168.0.248:49959 len=102
+2026-09-26 10:10:09  DETECTED kind=magic src=192.168.0.248:40436 len=102
+2026-09-26 10:44:41  listener started pid=3172 mac=28D0EA27400C ports=9,7,67,68,45678
+2026-09-26 10:44:44  DETECTED kind=magic src=127.0.0.1:64342 len=102
+2026-09-26 11:18:23  listener started pid=22336 mac=28D0EA27400C ports=9,7,67,68,45678
+2026-09-26 11:27:50  DETECTED kind=magic src=127.0.0.1:55469 len=102
+2026-09-26 12:00:18  DETECTED kind=magic src=192.168.0.248:58924 len=102
+2026-09-26 12:40:06  DETECTED kind=magic src=192.168.0.248:42971 len=102

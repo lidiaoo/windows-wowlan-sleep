@@ -1,0 +1,48 @@
+﻿[2026-09-25 14:18:04] class=NO_DATA wakeTime=2026-09-25T05:37:26.1291732Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-25 14:27:05] class=UNKNOWN wakeTime=2026-09-25T06:27:02.2964057Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: AP Association Lost
+[2026-09-25 14:40:28] class=UNKNOWN wakeTime=2026-09-25T06:40:25.3066228Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: AP Association Lost
+[2026-09-25 14:52:50] class=NO_DATA wakeTime=2026-09-25T06:52:47.3169040Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-25 14:55:56] class=NO_DATA wakeTime=2026-09-25T06:55:54.4598284Z source= raw=
+[2026-09-25 15:09:48] class=NON_MAGIC_AP_ASSOC_LOST wakeTime=2026-09-25T07:09:45.4030109Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: AP Association Lost
+[2026-09-25 15:14:16] class=NO_DATA wakeTime=2026-09-25T07:14:15.2838190Z source= raw=
+[2026-09-25 16:54:44] class=NO_DATA wakeTime=2026-09-25T08:54:41.6479882Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-25 16:58:18] class=NO_DATA wakeTime=2026-09-25T08:58:16.2222770Z source= raw=
+[2026-09-25 20:24:39] class=NO_DATA etl_present=True etl_mb=3 wakeTime=2026-09-25T12:24:36.5171327Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-25 20:30:23] class=NO_DATA etl_present=True etl_mb=0.2 wakeTime=2026-09-25T12:30:21.5159388Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-25 21:39:40] class=NO_DATA etl_present=False etl_mb=0 wakeTime=2026-09-25T13:39:37.3898733Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-25 22:47:44] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=3.4 wakeTime=2026-09-25T14:47:40.4324342Z source= raw=
+[2026-09-25 23:53:48] class=NO_DATA etl_present=True etl_mb=4.3 wakeTime=2026-09-25T15:53:44.4970592Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 02:25:22] class=NO_DATA etl_present=True etl_mb=14.5 wakeTime=2026-09-25T18:24:53.4838091Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 02:40:05] class=NO_DATA etl_present=True etl_mb=0.4 wakeTime=2026-09-25T18:40:02.5920171Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 04:13:32] class=NO_DATA etl_present=False etl_mb=0 wakeTime=2026-09-25T20:13:29.4548295Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 05:25:04] class=NO_DATA etl_present=True etl_mb=4.4 wakeTime=2026-09-25T21:25:00.4943796Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 07:01:12] class=NO_DATA etl_present=True etl_mb=3.7 wakeTime=2026-09-25T23:01:08.3771117Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 07:02:46] class=UNKNOWN etl_present=True etl_mb=3 wakeTime=2026-09-25T23:02:43.2539690Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: Incoming Packet
+[2026-09-26 07:04:16] class=NO_DATA etl_present=True etl_mb=3 wakeTime=2026-09-25T23:04:13.2856355Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 07:08:55] class=NO_DATA etl_present=True etl_mb=0.5 wakeTime=2026-09-25T23:08:53.4267539Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 07:09:21] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=2.4 wakeTime=2026-09-25T23:09:20.2482322Z source= raw=
+[2026-09-26 07:12:29] class=NO_DATA etl_present=True etl_mb=3 wakeTime=2026-09-25T23:12:26.3335318Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 07:17:06] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=2.8 wakeTime=2026-09-25T23:17:05.4151730Z source= raw=
+[2026-09-26 07:27:45] class=NO_DATA_EXPECTED_NON_NIC etl_present=False etl_mb=0 wakeTime=2026-09-25T23:17:05.4151730Z source= raw=
+[2026-09-26 07:31:23] class=NO_DATA etl_present=True etl_mb=0.2 wakeTime=2026-09-25T23:31:20.4453714Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 07:53:03] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=0.8 wakeTime=2026-09-25T23:53:01.4966021Z source= raw=
+[2026-09-26 08:43:16] class=NO_DATA etl_present=True etl_mb=0.3 wakeTime=2026-09-26T00:43:13.7631056Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 09:20:26] class=NO_DATA etl_present=True etl_mb=1.2 wakeTime=2026-09-26T01:20:23.6962935Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 09:32:21] class=NO_DATA etl_present=True etl_mb=3 wakeTime=2026-09-26T01:32:17.5313097Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 09:50:21] class=NON_MAGIC_AP_ASSOC_LOST etl_present=True etl_mb=3.4 wakeTime=2026-09-26T01:50:17.4873714Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: AP Association Lost
+[2026-09-26 09:58:16] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=2.4 wakeTime=2026-09-26T01:58:14.3634732Z source= raw=
+[2026-09-26 10:10:10] class=NO_DATA etl_present=True etl_mb=1.6 wakeTime=2026-09-26T02:10:07.7786487Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 10:20:55] class=NO_DATA etl_present=True etl_mb=3.6 wakeTime=2026-09-26T02:20:52.7637507Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 10:29:14] class=NO_DATA etl_present=True etl_mb=3.6 wakeTime=2026-09-26T02:29:11.4000461Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 10:35:59] class=NO_DATA etl_present=True etl_mb=0.9 wakeTime=2026-09-26T02:35:56.5180889Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 10:52:07] class=NO_DATA etl_present=True etl_mb=3.5 wakeTime=2026-09-26T02:52:04.3888103Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 11:10:18] class=NO_DATA etl_present=True etl_mb=3.5 wakeTime=2026-09-26T03:10:15.4539748Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 11:52:16] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=3.7 wakeTime=2026-09-26T03:52:12.7355879Z source= raw=
+[2026-09-26 11:53:36] class=NON_MAGIC_AP_ASSOC_LOST etl_present=True etl_mb=4.2 wakeTime=2026-09-26T03:53:33.3787438Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: AP Association Lost
+[2026-09-26 11:59:09] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=1.2 wakeTime=2026-09-26T03:59:07.6447103Z source= raw=
+[2026-09-26 12:00:20] class=MAGIC_PACKET etl_present=True etl_mb=2.8 wakeTime=2026-09-26T04:00:18.4331642Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: Incoming Packet
+[2026-09-26 12:33:28] class=NON_MAGIC_AP_ASSOC_LOST etl_present=True etl_mb=3.9 wakeTime=2026-09-26T04:33:25.4512913Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: AP Association Lost
+[2026-09-26 12:40:11] class=MAGIC_PACKET etl_present=True etl_mb=1.8 wakeTime=2026-09-26T04:40:07.3759272Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=The network adapter indicated a wake signal. Interface Luid: 0x47008006000000 Wake reason: Incoming Packet
+[2026-09-26 16:55:11] class=NO_DATA etl_present=True etl_mb=1.2 wakeTime=2026-09-26T08:55:06.3590015Z source=Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) raw=
+[2026-09-26 17:22:20] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=1.1 wakeTime=2026-09-26T09:22:17.5973610Z source= raw=
+[2026-09-26 17:22:56] class=NO_DATA_EXPECTED_NON_NIC etl_present=True etl_mb=3 wakeTime=2026-09-26T09:22:54.6171350Z source= raw=
