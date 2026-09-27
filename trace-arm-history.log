@@ -1,602 +1,125 @@
-﻿2026-09-25 17:28:00  resleep: ARM    reason=idle-approach idle=595s armAt=60s  session-running=True
-[2026-09-25 17:28:10] test: trace stopped manually
-2026-09-25 17:28:51  resleep: ARM    reason=idle-approach idle=646s armAt=600s  session-running=True
-2026-09-25 18:14:51  resleep: ARM    reason=idle-approach idle=3406s armAt=600s  session-running=True
-2026-09-25 18:42:50  resleep: DISARM reason=user-returned idle=0s
-[2026-09-25 18:43:07] arm: system entering sleep
-[2026-09-25 18:43:08] arm done: session-running=True etl-present=True
-[2026-09-25 20:24:42] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-25 20:24:43  resleep: ARM    reason=idle-approach idle=6094s armAt=600s  session-running=True
-2026-09-25 20:24:44  resleep: ARM    reason=about-to-suspend  session-running=True
-2026-09-25 20:24:50  resleep: DISARM reason=user-returned idle=2s
-[2026-09-25 20:24:55] arm: system entering sleep
-[2026-09-25 20:24:56] arm done: session-running=True etl-present=True
-2026-09-25 20:30:24  resleep: ARM    reason=about-to-suspend  session-running=False
-[2026-09-25 20:30:26] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-25 20:30:40] arm: system entering sleep
-[2026-09-25 20:30:41] arm done: session-running=True etl-present=True
-2026-09-25 21:39:42  resleep: ARM    reason=idle-approach idle=4151s armAt=600s  session-running=True
-[2026-09-25 21:39:43] capture done: etl_present=False etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-25 21:39:44  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-25 21:39:57] arm: system entering sleep
-[2026-09-25 21:39:57] arm done: session-running=True etl-present=True
-[2026-09-25 22:47:49] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-25 22:48:28] arm: system entering sleep
-[2026-09-25 22:48:29] arm done: session-running=True etl-present=True
-2026-09-25 23:53:53  resleep: ARM    reason=idle-approach idle=3922s armAt=600s  session-running=True
-[2026-09-25 23:53:54] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-25 23:54:50  resleep: DISARM reason=user-returned idle=42s
-2026-09-25 23:56:50  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-25 23:56:52] arm: system entering sleep
-[2026-09-25 23:56:53] arm done: session-running=True etl-present=True
-2026-09-26 02:25:25  resleep: ARM    reason=idle-approach idle=8912s armAt=600s  session-running=False
-2026-09-26 02:25:27  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 02:25:31] arm: system entering sleep
-[2026-09-26 02:25:32] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 02:25:32] arm done: session-running=True etl-present=False
-2026-09-26 02:40:06  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 02:40:08] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 02:40:27] arm: system entering sleep
-[2026-09-26 02:40:27] arm done: session-running=True etl-present=True
-[2026-09-26 04:13:35] capture done: etl_present=False etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 04:13:36  resleep: ARM    reason=idle-approach idle=5602s armAt=600s  session-running=True
-2026-09-26 04:13:37  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 04:13:53] arm: system entering sleep
-[2026-09-26 04:13:54] arm done: session-running=True etl-present=True
-2026-09-26 05:25:08  resleep: ARM    reason=idle-approach idle=9893s armAt=600s  session-running=True
-[2026-09-26 05:25:10] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 05:26:06  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 05:26:08] arm: system entering sleep
-[2026-09-26 05:26:09] arm done: session-running=True etl-present=True
-2026-09-26 07:01:16  resleep: ARM    reason=idle-approach idle=5706s armAt=600s  session-running=False
-[2026-09-26 07:01:16] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 07:01:17  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 07:01:27] arm: system entering sleep
-[2026-09-26 07:01:27] arm done: session-running=True etl-present=True
-[2026-09-26 07:02:50] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 07:03:43] arm: system entering sleep
-[2026-09-26 07:04:12] arm done: session-running=True etl-present=True
-[2026-09-26 07:04:20] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 07:06:27] arm: system entering sleep
-[2026-09-26 07:06:28] arm done: session-running=True etl-present=True
-2026-09-26 07:08:58  resleep: ARM    reason=about-to-suspend  session-running=False
-[2026-09-26 07:08:59] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 07:08:59  resleep: DISARM reason=user-returned idle=0s
-[2026-09-26 07:09:12] arm: system entering sleep
-[2026-09-26 07:09:12] arm done: session-running=True etl-present=True
-[2026-09-26 07:09:25] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 07:11:56] arm: system entering sleep
-[2026-09-26 07:11:57] arm done: session-running=True etl-present=True
-[2026-09-26 07:12:33] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 07:16:50  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 07:16:54] arm: system entering sleep
-[2026-09-26 07:16:55] arm done: session-running=True etl-present=True
-2026-09-26 07:17:11  resleep: DISARM reason=user-returned idle=1s
-[2026-09-26 07:17:11] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 07:27:47] capture done: etl_present=False etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 07:29:56] arm: system entering sleep
-[2026-09-26 07:31:24] arm done: session-running=False etl-present=True
-[2026-09-26 07:31:26] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 07:40:50  resleep: listener (re)started by resleep
-2026-09-26 07:41:02  listener: ARM    reason=listener-idle idle=206s session-running=True
-2026-09-26 07:45:33  listener: ARM    reason=listener-idle idle=477s session-running=False
-2026-09-26 07:45:36  listener: ARM    reason=listener-idle idle=480s session-running=True
-2026-09-26 07:52:39  listener: ARM    reason=listener-idle idle=903s session-running=True
-2026-09-26 07:52:50  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 07:52:54] arm: system entering sleep
-[2026-09-26 07:52:55] arm done: session-running=True etl-present=True
-2026-09-26 07:53:00  listener: DISARM reason=listener-user-active idle=7s
-[2026-09-26 07:53:07] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 07:56:56  listener: ARM    reason=listener-idle idle=47s session-running=True
-2026-09-26 07:57:27  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 07:59:46  listener: ARM    reason=listener-idle idle=52s session-running=True
-2026-09-26 08:01:28  listener: DISARM reason=listener-user-active idle=7s
-2026-09-26 08:02:08  listener: ARM    reason=listener-idle idle=48s session-running=True
-2026-09-26 08:06:22  listener: ARM    reason=listener-idle idle=301s session-running=True
-2026-09-26 08:06:44  listener: ARM    reason=listener-idle idle=323s session-running=False
-2026-09-26 08:06:54  listener: ARM    reason=listener-idle idle=333s session-running=False
-2026-09-26 08:07:04  listener: ARM    reason=listener-idle idle=343s session-running=False
-2026-09-26 08:07:14  listener: ARM    reason=listener-idle idle=353s session-running=False
-2026-09-26 08:07:24  listener: ARM    reason=listener-idle idle=363s session-running=False
-2026-09-26 08:07:34  listener: ARM    reason=listener-idle idle=373s session-running=False
-2026-09-26 08:07:44  listener: ARM    reason=listener-idle idle=384s session-running=False
-2026-09-26 08:07:54  listener: ARM    reason=listener-idle idle=394s session-running=False
-2026-09-26 08:08:04  listener: ARM    reason=listener-idle idle=404s session-running=False
-2026-09-26 08:08:14  listener: ARM    reason=listener-idle idle=414s session-running=False
-2026-09-26 08:08:24  listener: ARM    reason=listener-idle idle=424s session-running=False
-2026-09-26 08:08:34  listener: ARM    reason=listener-idle idle=434s session-running=False
-2026-09-26 08:08:59  listener: ARM    reason=listener-idle idle=459s session-running=False
-2026-09-26 08:09:09  listener: ARM    reason=listener-idle idle=469s session-running=False
-2026-09-26 08:09:19  listener: ARM    reason=listener-idle idle=479s session-running=False
-2026-09-26 08:09:29  listener: ARM    reason=listener-idle idle=489s session-running=False
-2026-09-26 08:09:39  listener: ARM    reason=listener-idle idle=499s session-running=False
-2026-09-26 08:09:49  listener: ARM    reason=listener-idle idle=509s session-running=False
-2026-09-26 08:10:00  listener: ARM    reason=listener-idle idle=519s session-running=False
-2026-09-26 08:10:10  listener: ARM    reason=listener-idle idle=529s session-running=False
-2026-09-26 08:10:20  listener: ARM    reason=listener-idle idle=539s session-running=False
-2026-09-26 08:10:30  listener: ARM    reason=listener-idle idle=549s session-running=False
-2026-09-26 08:10:40  listener: ARM    reason=listener-idle idle=559s session-running=False
-2026-09-26 08:10:50  listener: ARM    reason=listener-idle idle=570s session-running=False
-2026-09-26 08:11:00  listener: ARM    reason=listener-idle idle=580s session-running=False
-2026-09-26 08:11:10  listener: ARM    reason=listener-idle idle=590s session-running=False
-2026-09-26 08:11:20  listener: ARM    reason=listener-idle idle=600s session-running=False
-2026-09-26 08:11:30  listener: ARM    reason=listener-idle idle=610s session-running=False
-2026-09-26 08:11:40  listener: ARM    reason=listener-idle idle=620s session-running=False
-2026-09-26 08:11:51  listener: ARM    reason=listener-idle idle=630s session-running=False
-2026-09-26 08:12:06  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 08:13:04  listener: ARM    reason=listener-idle idle=48s session-running=False
-2026-09-26 08:13:08  listener: ARM    reason=listener-idle idle=51s session-running=True
-2026-09-26 08:13:14  listener: ARM    reason=listener-idle idle=58s session-running=False
-2026-09-26 08:13:25  listener: ARM    reason=listener-idle idle=69s session-running=False
-2026-09-26 08:13:35  listener: ARM    reason=listener-idle idle=79s session-running=False
-2026-09-26 08:13:45  listener: ARM    reason=listener-idle idle=89s session-running=False
-2026-09-26 08:13:55  listener: ARM    reason=listener-idle idle=99s session-running=False
-2026-09-26 08:14:50  resleep: listener (re)started by resleep
-2026-09-26 08:15:21  listener: ARM    reason=listener-idle idle=184s session-running=True
-2026-09-26 08:22:50  resleep: listener (re)started by resleep
-2026-09-26 08:24:49  listener: ARM    reason=listener-idle idle=752s session-running=True
-2026-09-26 08:24:50  resleep: listener (re)started by resleep
-2026-09-26 08:26:30  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 08:26:50  resleep: listener (re)started by resleep
-2026-09-26 08:27:18  listener: ARM    reason=listener-idle idle=47s session-running=True
-2026-09-26 08:28:50  resleep: listener (re)started by resleep
-2026-09-26 08:30:50  resleep: listener (re)started by resleep
-2026-09-26 08:31:44  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 08:32:33  listener: ARM    reason=listener-idle idle=46s session-running=True
-2026-09-26 08:32:51  resleep: listener (re)started by resleep
-2026-09-26 08:34:51  resleep: listener (re)started by resleep
-2026-09-26 08:35:19  listener: ARM    reason=listener-idle idle=212s session-running=True
-2026-09-26 08:36:04  listener: ARM    reason=listener-idle idle=257s session-running=True
-2026-09-26 08:36:51  resleep: DISARM reason=user-returned idle=0s
-2026-09-26 08:36:51  resleep: listener (re)started by resleep
-2026-09-26 08:38:51  resleep: listener (re)started by resleep
-[2026-09-26 08:39:09] arm: system entering sleep
-[2026-09-26 08:39:10] arm done: session-running=True etl-present=True
-2026-09-26 08:43:14  listener: ARM    reason=listener-idle idle=245s session-running=False
-2026-09-26 08:43:16  listener: ARM    reason=listener-idle idle=245s session-running=False
-2026-09-26 08:43:16  listener: ARM    reason=listener-idle idle=245s session-running=False
-2026-09-26 08:43:18  resleep: listener (re)started by resleep
-2026-09-26 08:43:19  resleep: listener (re)started by resleep
-[2026-09-26 08:43:19] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 08:44:51  resleep: listener (re)started by resleep
-2026-09-26 08:46:51  resleep: listener (re)started by resleep
-2026-09-26 08:48:26  listener: ARM    reason=listener-idle idle=49s session-running=True
-2026-09-26 08:48:51  resleep: listener (re)started by resleep
-2026-09-26 08:50:51  resleep: listener (re)started by resleep
-2026-09-26 08:50:52  listener: ARM    reason=listener-idle idle=196s session-running=True
-2026-09-26 08:52:37  listener: ARM    reason=listener-idle idle=300s session-running=True
-2026-09-26 08:52:51  resleep: listener (re)started by resleep
-2026-09-26 08:54:41  listener: ARM    reason=listener-idle idle=425s session-running=True
-2026-09-26 08:54:51  resleep: listener (re)started by resleep
-2026-09-26 08:56:51  resleep: listener (re)started by resleep
-2026-09-26 08:58:31  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 08:58:51  resleep: listener (re)started by resleep
-2026-09-26 08:59:34  listener: ARM    reason=listener-idle idle=46s session-running=True
-2026-09-26 09:00:36  listener: ARM    reason=listener-idle idle=109s session-running=True
-2026-09-26 09:00:57  listener: fast-path: ran resleep (idle=129s)
-2026-09-26 09:01:17  listener: ARM    reason=listener-idle idle=150s session-running=False
-2026-09-26 09:01:28  listener: fast-path: ran resleep (idle=160s)
-2026-09-26 09:01:38  listener: ARM    reason=listener-idle idle=170s session-running=True
-2026-09-26 09:01:59  listener: fast-path: ran resleep (idle=191s)
-2026-09-26 09:02:29  listener: fast-path: ran resleep (idle=212s)
-2026-09-26 09:02:51  listener: ARM    reason=listener-idle idle=244s session-running=True
-2026-09-26 09:03:00  listener: fast-path: ran resleep (idle=244s)
-2026-09-26 09:03:30  listener: fast-path: ran resleep (idle=275s)
-2026-09-26 09:04:01  listener: fast-path: ran resleep (idle=306s)
-2026-09-26 09:04:31  listener: fast-path: ran resleep (idle=338s)
-2026-09-26 09:05:01  listener: fast-path: ran resleep (idle=369s)
-2026-09-26 09:05:32  listener: fast-path: ran resleep (idle=401s)
-2026-09-26 09:06:02  listener: fast-path: ran resleep (idle=432s)
-2026-09-26 09:06:32  listener: fast-path: ran resleep (idle=464s)
-2026-09-26 09:07:03  listener: fast-path: ran resleep (idle=495s)
-2026-09-26 09:07:33  listener: fast-path: ran resleep (idle=516s)
-2026-09-26 09:08:03  listener: fast-path: ran resleep (idle=548s)
-2026-09-26 09:08:33  listener: fast-path: ran resleep (idle=579s)
-2026-09-26 09:08:38  listener: ARM    reason=listener-idle idle=590s session-running=True
-2026-09-26 09:09:04  listener: fast-path: ran resleep (idle=611s)
-2026-09-26 09:09:34  listener: fast-path: ran resleep (idle=642s)
-2026-09-26 09:10:05  listener: fast-path: ran resleep (idle=674s)
-2026-09-26 09:10:33  listener: DISARM reason=listener-user-active idle=1s
-[2026-09-26 09:11:28] arm: system entering sleep
-[2026-09-26 09:11:29] arm done: session-running=True etl-present=True
-2026-09-26 09:20:24  listener: ARM    reason=listener-idle idle=536s session-running=False
-2026-09-26 09:20:25  listener: fast-path: ran resleep (idle=536s)
-[2026-09-26 09:20:30] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 09:26:00  listener: ARM    reason=listener-idle idle=49s session-running=True
-2026-09-26 09:27:12  listener: fast-path: ran resleep (idle=122s)
-2026-09-26 09:27:22  listener: DISARM reason=listener-user-active idle=0s
-[2026-09-26 09:30:21] arm: system entering sleep
-[2026-09-26 09:30:22] arm done: session-running=False etl-present=True
-[2026-09-26 09:32:26] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 09:35:23  listener: ARM    reason=listener-idle idle=50s session-running=True
-2026-09-26 09:36:35  listener: fast-path: ran resleep (idle=121s)
-2026-09-26 09:37:05  listener: fast-path: ran resleep (idle=152s)
-2026-09-26 09:37:35  listener: fast-path: ran resleep (idle=182s)
-2026-09-26 09:38:06  listener: fast-path: ran resleep (idle=213s)
-2026-09-26 09:38:36  listener: fast-path: ran resleep (idle=243s)
-2026-09-26 09:39:06  listener: fast-path: ran resleep (idle=273s)
-2026-09-26 09:39:37  listener: fast-path: ran resleep (idle=304s)
-2026-09-26 09:39:56  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 09:44:31  listener: ARM    reason=listener-idle idle=48s session-running=True
-2026-09-26 09:44:42  listener: DISARM reason=listener-user-active idle=1s
-2026-09-26 09:45:33  listener: ARM    reason=listener-idle idle=52s session-running=True
-2026-09-26 09:46:45  listener: fast-path: ran resleep (idle=124s)
-2026-09-26 09:47:16  listener: fast-path: ran resleep (idle=155s)
-2026-09-26 09:47:47  listener: fast-path: ran resleep (idle=186s)
-2026-09-26 09:48:18  listener: fast-path: ran resleep (idle=216s)
-2026-09-26 09:48:48  listener: fast-path: ran resleep (idle=247s)
-2026-09-26 09:48:58  listener: DISARM reason=listener-user-active idle=0s
-[2026-09-26 09:49:12] arm: system entering sleep
-[2026-09-26 09:49:13] arm done: session-running=False etl-present=True
-[2026-09-26 09:50:29] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 09:53:20  listener: ARM    reason=listener-idle idle=55s session-running=True
-2026-09-26 09:53:40  listener: DISARM reason=listener-user-active idle=2s
-2026-09-26 09:56:33  listener: ARM    reason=listener-idle idle=47s session-running=True
-2026-09-26 09:57:54  listener: fast-path: ran resleep (idle=129s)
-2026-09-26 09:57:57  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 09:58:00] arm: system entering sleep
-[2026-09-26 09:58:01] arm done: session-running=False etl-present=True
-[2026-09-26 09:58:21] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 10:01:16  listener: ARM    reason=listener-idle idle=54s session-running=True
-2026-09-26 10:01:36  listener: DISARM reason=listener-user-active idle=2s
-2026-09-26 10:02:50  listener: ARM    reason=listener-idle idle=52s session-running=True
-2026-09-26 10:02:51  resleep: DISARM reason=user-returned idle=51s
-2026-09-26 10:03:01  listener: ARM    reason=listener-idle idle=62s session-running=True
-2026-09-26 10:04:04  listener: fast-path: ran resleep (idle=125s)
-2026-09-26 10:04:14  listener: DISARM reason=listener-user-active idle=1s
-[2026-09-26 10:05:35] arm: system entering sleep
-[2026-09-26 10:05:36] arm done: session-running=True etl-present=True
-2026-09-26 10:10:08  listener: ARM    reason=listener-idle idle=271s session-running=False
-2026-09-26 10:10:09  listener: fast-path: ran resleep (idle=271s)
-[2026-09-26 10:10:14] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 10:10:16  listener: ARM    reason=listener-idle idle=281s session-running=True
-2026-09-26 10:10:27  listener: DISARM reason=listener-user-active idle=8s
-2026-09-26 10:11:08  listener: ARM    reason=listener-idle idle=49s session-running=True
-2026-09-26 10:12:29  listener: fast-path: ran resleep (idle=129s)
-2026-09-26 10:12:59  listener: fast-path: ran resleep (idle=160s)
-2026-09-26 10:13:29  listener: fast-path: ran resleep (idle=190s)
-2026-09-26 10:14:00  listener: fast-path: ran resleep (idle=220s)
-2026-09-26 10:14:30  listener: fast-path: ran resleep (idle=251s)
-2026-09-26 10:15:00  listener: fast-path: ran resleep (idle=281s)
-2026-09-26 10:15:31  listener: fast-path: ran resleep (idle=311s)
-2026-09-26 10:16:01  listener: fast-path: ran resleep (idle=342s)
-2026-09-26 10:16:31  listener: fast-path: ran resleep (idle=372s)
-2026-09-26 10:16:33  resleep: DISARM reason=user-returned idle=1s
-[2026-09-26 10:17:17] arm: system entering sleep
-[2026-09-26 10:17:18] arm done: session-running=True etl-present=True
-2026-09-26 10:20:52  listener: fast-path: ran resleep (idle=215s)
-[2026-09-26 10:21:01] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 10:21:02  listener: ARM    reason=listener-idle idle=225s session-running=True
-2026-09-26 10:21:11  listener: DISARM reason=listener-user-active idle=2s
-2026-09-26 10:22:02  listener: ARM    reason=listener-idle idle=53s session-running=True
-2026-09-26 10:23:13  listener: fast-path: ran resleep (idle=124s)
-2026-09-26 10:23:44  listener: fast-path: ran resleep (idle=154s)
-2026-09-26 10:24:14  listener: fast-path: ran resleep (idle=185s)
-2026-09-26 10:24:44  listener: fast-path: ran resleep (idle=215s)
-2026-09-26 10:25:14  listener: fast-path: ran resleep (idle=245s)
-2026-09-26 10:25:45  listener: fast-path: ran resleep (idle=275s)
-2026-09-26 10:26:15  listener: fast-path: ran resleep (idle=306s)
-2026-09-26 10:26:45  listener: fast-path: ran resleep (idle=336s)
-2026-09-26 10:27:16  listener: fast-path: ran resleep (idle=366s)
-2026-09-26 10:27:45  listener: DISARM reason=listener-user-active idle=0s
-[2026-09-26 10:28:34] arm: system entering sleep
-[2026-09-26 10:28:35] arm done: session-running=True etl-present=True
-[2026-09-26 10:29:20] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 10:29:21  listener: ARM    reason=listener-idle idle=48s session-running=True
-2026-09-26 10:29:31  listener: DISARM reason=listener-user-active idle=3s
-2026-09-26 10:30:22  listener: ARM    reason=listener-idle idle=54s session-running=True
-2026-09-26 10:31:34  listener: fast-path: ran resleep (idle=125s)
-2026-09-26 10:32:04  listener: fast-path: ran resleep (idle=156s)
-2026-09-26 10:32:34  listener: fast-path: ran resleep (idle=186s)
-2026-09-26 10:33:04  listener: fast-path: ran resleep (idle=216s)
-2026-09-26 10:33:24  listener: DISARM reason=listener-user-active idle=0s
-[2026-09-26 10:35:39] arm: system entering sleep
-[2026-09-26 10:35:40] arm done: session-running=True etl-present=True
-2026-09-26 10:35:55  listener: DISARM reason=listener-user-active idle=18s
-[2026-09-26 10:36:04] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 10:39:39  listener: ARM    reason=listener-idle idle=50s session-running=True
-2026-09-26 10:40:50  listener: fast-path: ran resleep (idle=121s)
-2026-09-26 10:41:10  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 10:42:01  listener: ARM    reason=listener-idle idle=51s session-running=True
-2026-09-26 10:43:12  listener: fast-path: ran resleep (idle=122s)
-2026-09-26 10:43:42  listener: fast-path: ran resleep (idle=152s)
-2026-09-26 10:44:12  listener: fast-path: ran resleep (idle=182s)
-2026-09-26 10:44:53  listener: fast-path: ran resleep (idle=223s)
-2026-09-26 10:45:23  listener: fast-path: ran resleep (idle=253s)
-2026-09-26 10:45:53  listener: fast-path: ran resleep (idle=283s)
-2026-09-26 10:46:24  listener: fast-path: ran resleep (idle=314s)
-2026-09-26 10:46:43  listener: DISARM reason=listener-user-active idle=1s
-2026-09-26 10:46:54  listener: DISARM reason=listener-user-active idle=2s
-2026-09-26 10:47:04  listener: DISARM reason=listener-user-active idle=0s
-[2026-09-26 10:47:12] arm: system entering sleep
-[2026-09-26 10:47:13] arm done: session-running=True etl-present=True
-2026-09-26 10:52:04  listener: fast-path: ran resleep (idle=293s)
-[2026-09-26 10:52:13] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 10:53:05  listener: ARM    reason=listener-idle idle=55s session-running=True
-2026-09-26 10:54:16  listener: fast-path: ran resleep (idle=126s)
-2026-09-26 10:54:45  listener: KEEP-ARMED resume=160s ago -> not disarming (idle=0s)
-2026-09-26 10:54:50  resleep: DISARM reason=user-returned idle=0s
-2026-09-26 10:57:08  listener: ARM    reason=listener-idle idle=47s session-running=True
-2026-09-26 10:58:08  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 10:58:19  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 10:58:29  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 10:58:39  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 10:58:49  listener: DISARM reason=listener-user-active idle=1s
-2026-09-26 10:58:50  resleep: DISARM reason=user-returned idle=0s
-2026-09-26 11:01:01  listener: ARM    reason=listener-idle idle=50s session-running=True
-2026-09-26 11:02:13  listener: fast-path: ran resleep (idle=121s)
-2026-09-26 11:02:43  listener: fast-path: ran resleep (idle=151s)
-2026-09-26 11:03:13  listener: DISARM reason=listener-user-active idle=1s
-2026-09-26 11:03:23  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:03:33  listener: DISARM reason=listener-user-active idle=11s
-2026-09-26 11:03:44  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:03:54  listener: DISARM reason=listener-user-active idle=8s
-2026-09-26 11:04:04  listener: DISARM reason=listener-user-active idle=18s
-2026-09-26 11:05:56  listener: fast-path: ran resleep (idle=129s)
-2026-09-26 11:06:26  listener: ARM    reason=listener-idle idle=160s session-running=True
-2026-09-26 11:06:27  listener: fast-path: ran resleep (idle=160s)
-2026-09-26 11:06:57  listener: fast-path: ran resleep (idle=190s)
-2026-09-26 11:07:28  listener: fast-path: ran resleep (idle=221s)
-2026-09-26 11:07:58  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:08:08  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:08:19  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:08:29  listener: DISARM reason=listener-user-active idle=1s
-2026-09-26 11:08:40  listener: DISARM reason=listener-user-active idle=4s
-2026-09-26 11:08:50  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:08:50  resleep: DISARM reason=user-returned idle=3s
-[2026-09-26 11:09:06] arm: system entering sleep
-[2026-09-26 11:09:07] arm done: session-running=True etl-present=True
-[2026-09-26 11:10:25] capture done: etl_present=True etl_kept_as=ndiswake-last.etl, waiting for the next sleep to re-arm
-2026-09-26 11:15:58  listener: ARM    reason=listener-idle idle=50s session-running=True
-2026-09-26 11:16:07  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:16:18  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:16:28  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:16:39  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:16:50  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:16:51  resleep: DISARM reason=user-returned idle=1s
-2026-09-26 11:17:42  listener: ARM    reason=listener-idle idle=50s session-running=True
-2026-09-26 11:18:55  listener: fast-path: ran resleep (idle=123s)
-2026-09-26 11:19:25  listener: fast-path: ran resleep (idle=144s)
-2026-09-26 11:19:56  listener: fast-path: ran resleep (idle=175s)
-2026-09-26 11:20:08  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:20:18  listener: DISARM reason=listener-user-active idle=9s
-2026-09-26 11:20:29  listener: DISARM reason=listener-user-active idle=20s
-2026-09-26 11:20:51  resleep: DISARM reason=user-returned idle=40s
-2026-09-26 11:21:01  listener: ARM    reason=listener-idle idle=51s session-running=True
-2026-09-26 11:22:14  listener: fast-path: ran resleep (idle=124s)
-2026-09-26 11:22:44  listener: fast-path: ran resleep (idle=145s)
-2026-09-26 11:22:45  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:22:47  resleep: DISARM reason=user-returned idle=0s
-2026-09-26 11:23:38  listener: ARM    reason=listener-idle idle=52s session-running=True
-2026-09-26 11:24:19  listener: ARM    reason=listener-idle idle=94s session-running=True
-2026-09-26 11:24:51  listener: fast-path: ran resleep (idle=125s)
-2026-09-26 11:25:22  listener: fast-path: ran resleep (idle=156s)
-2026-09-26 11:25:52  listener: fast-path: ran resleep (idle=177s)
-2026-09-26 11:26:22  listener: fast-path: ran resleep (idle=208s)
-2026-09-26 11:26:24  listener: ARM    reason=listener-idle idle=219s session-running=False
-2026-09-26 11:26:52  listener: fast-path: ran resleep (idle=240s)
-2026-09-26 11:27:22  listener: fast-path: ran resleep (idle=271s)
-2026-09-26 11:27:53  listener: fast-path: ran resleep (idle=302s)
-2026-09-26 11:28:23  listener: fast-path: ran resleep (idle=334s)
-2026-09-26 11:28:54  listener: fast-path: ran resleep (idle=365s)
-2026-09-26 11:29:25  listener: fast-path: ran resleep (idle=396s)
-2026-09-26 11:29:55  listener: fast-path: ran resleep (idle=428s)
-2026-09-26 11:30:25  listener: fast-path: ran resleep (idle=459s)
-2026-09-26 11:30:35  listener: ARM    reason=listener-idle idle=470s session-running=True
-2026-09-26 11:30:56  listener: fast-path: ran resleep (idle=490s)
-2026-09-26 11:31:26  listener: fast-path: ran resleep (idle=511s)
-2026-09-26 11:31:56  listener: fast-path: ran resleep (idle=542s)
-2026-09-26 11:32:26  listener: fast-path: ran resleep (idle=574s)
-2026-09-26 11:32:57  listener: fast-path: ran resleep (idle=605s)
-2026-09-26 11:33:27  listener: fast-path: ran resleep (idle=636s)
-2026-09-26 11:33:58  listener: fast-path: ran resleep (idle=668s)
-2026-09-26 11:34:29  listener: fast-path: ran resleep (idle=699s)
-2026-09-26 11:34:59  listener: fast-path: ran resleep (idle=730s)
-2026-09-26 11:35:30  listener: fast-path: ran resleep (idle=761s)
-2026-09-26 11:36:00  listener: fast-path: ran resleep (idle=793s)
-2026-09-26 11:36:31  listener: fast-path: ran resleep (idle=824s)
-2026-09-26 11:37:02  listener: fast-path: ran resleep (idle=855s)
-2026-09-26 11:37:32  listener: fast-path: ran resleep (idle=887s)
-2026-09-26 11:38:02  listener: fast-path: ran resleep (idle=908s)
-2026-09-26 11:38:33  listener: fast-path: ran resleep (idle=939s)
-2026-09-26 11:39:03  listener: fast-path: ran resleep (idle=970s)
-2026-09-26 11:39:16  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:39:26  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:39:37  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:39:47  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:39:58  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:40:09  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:40:19  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:40:30  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:40:40  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:40:51  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:40:51  resleep: DISARM reason=user-returned idle=0s
-2026-09-26 11:42:05  listener: ARM    reason=listener-idle idle=48s session-running=True
-2026-09-26 11:43:18  listener: fast-path: ran resleep (idle=122s)
-2026-09-26 11:43:48  listener: fast-path: ran resleep (idle=143s)
-2026-09-26 11:43:49  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:43:52  resleep: DISARM reason=user-returned idle=0s
-2026-09-26 11:44:41  listener: ARM    reason=listener-idle idle=49s session-running=True
-2026-09-26 11:44:51  resleep: DISARM reason=user-returned idle=58s
-2026-09-26 11:44:52  listener: ARM    reason=listener-idle idle=60s session-running=True
-2026-09-26 11:45:54  listener: fast-path: ran resleep (idle=122s)
-2026-09-26 11:46:24  listener: fast-path: ran resleep (idle=143s)
-2026-09-26 11:46:36  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:46:46  listener: DISARM reason=listener-user-active idle=0s
-2026-09-26 11:46:51  resleep: DISARM reason=user-returned idle=0s
-[2026-09-26 11:46:57] arm: system entering sleep
-[2026-09-26 11:46:58] arm done: session-running=True etl-present=True
-2026-09-26 11:52:13  listener: fast-path: ran resleep (idle=315s)
-[2026-09-26 11:52:22] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 11:52:41] arm: system entering sleep
-[2026-09-26 11:52:42] arm done: session-running=True etl-present=True
-2026-09-26 11:53:38  resleep: DISARM reason=user-returned idle=51s
-[2026-09-26 11:53:43] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-2026-09-26 11:53:44  listener: ARM    reason=listener-idle idle=62s session-running=True
-2026-09-26 11:53:53  listener: KEEP-ARMED resume=19s ago -> not disarming (idle=3s)
-2026-09-26 11:55:56  listener: fast-path: ran resleep (idle=125s)
-2026-09-26 11:55:58  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 11:56:00] arm: system entering sleep
-[2026-09-26 11:56:01] arm done: session-running=True etl-present=True
-2026-09-26 11:59:06  listener: fast-path: ran resleep (idle=125s)
-2026-09-26 11:59:08  listener: ARM    reason=listener-idle idle=187s session-running=True
-[2026-09-26 11:59:14] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-[2026-09-26 11:59:30] arm: system entering sleep
-[2026-09-26 11:59:31] arm done: session-running=True etl-present=True
-[2026-09-26 12:00:24] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-2026-09-26 12:00:28  listener: ARM    reason=listener-idle idle=60s session-running=True
-2026-09-26 12:00:38  listener: KEEP-ARMED resume=19s ago -> not disarming (idle=10s)
-2026-09-26 12:00:50  resleep: DISARM reason=user-returned idle=20s
-2026-09-26 12:01:19  listener: ARM    reason=listener-idle idle=50s session-running=True
-2026-09-26 12:02:30  listener: fast-path: ran resleep (idle=121s)
-2026-09-26 12:03:00  listener: fast-path: ran resleep (idle=151s)
-2026-09-26 12:03:31  listener: fast-path: ran resleep (idle=182s)
-2026-09-26 12:04:01  listener: fast-path: ran resleep (idle=212s)
-2026-09-26 12:04:31  listener: fast-path: ran resleep (idle=242s)
-2026-09-26 12:05:02  listener: fast-path: ran resleep (idle=272s)
-2026-09-26 12:05:32  listener: fast-path: ran resleep (idle=303s)
-2026-09-26 12:06:02  listener: fast-path: ran resleep (idle=333s)
-2026-09-26 12:06:32  listener: fast-path: ran resleep (idle=363s)
-2026-09-26 12:07:03  listener: fast-path: ran resleep (idle=394s)
-2026-09-26 12:07:33  listener: fast-path: ran resleep (idle=424s)
-2026-09-26 12:08:03  listener: fast-path: ran resleep (idle=454s)
-2026-09-26 12:08:34  listener: fast-path: ran resleep (idle=484s)
-2026-09-26 12:09:04  listener: fast-path: ran resleep (idle=515s)
-2026-09-26 12:09:34  listener: fast-path: ran resleep (idle=545s)
-2026-09-26 12:10:04  listener: fast-path: ran resleep (idle=575s)
-2026-09-26 12:10:35  listener: fast-path: ran resleep (idle=605s)
-2026-09-26 12:11:05  listener: fast-path: ran resleep (idle=636s)
-2026-09-26 12:11:35  listener: fast-path: ran resleep (idle=666s)
-2026-09-26 12:12:05  listener: fast-path: ran resleep (idle=696s)
-2026-09-26 12:12:36  listener: fast-path: ran resleep (idle=726s)
-2026-09-26 12:13:06  listener: fast-path: ran resleep (idle=757s)
-2026-09-26 12:13:36  listener: fast-path: ran resleep (idle=787s)
-2026-09-26 12:14:07  listener: fast-path: ran resleep (idle=817s)
-2026-09-26 12:14:37  listener: fast-path: ran resleep (idle=848s)
-2026-09-26 12:15:07  listener: fast-path: ran resleep (idle=878s)
-2026-09-26 12:15:37  listener: fast-path: ran resleep (idle=908s)
-2026-09-26 12:16:08  listener: fast-path: ran resleep (idle=938s)
-2026-09-26 12:16:38  listener: fast-path: ran resleep (idle=969s)
-2026-09-26 12:17:08  listener: fast-path: ran resleep (idle=999s)
-2026-09-26 12:17:38  listener: fast-path: ran resleep (idle=1029s)
-2026-09-26 12:18:09  listener: fast-path: ran resleep (idle=1059s)
-2026-09-26 12:18:39  listener: fast-path: ran resleep (idle=1090s)
-2026-09-26 12:19:09  listener: fast-path: ran resleep (idle=1120s)
-2026-09-26 12:19:40  listener: fast-path: ran resleep (idle=1150s)
-2026-09-26 12:20:10  listener: fast-path: ran resleep (idle=1181s)
-2026-09-26 12:20:40  listener: fast-path: ran resleep (idle=1211s)
-2026-09-26 12:21:10  listener: fast-path: ran resleep (idle=1241s)
-2026-09-26 12:21:41  listener: fast-path: ran resleep (idle=1271s)
-2026-09-26 12:22:11  listener: fast-path: ran resleep (idle=1302s)
-2026-09-26 12:22:41  listener: fast-path: ran resleep (idle=1332s)
-2026-09-26 12:23:11  listener: fast-path: ran resleep (idle=1362s)
-2026-09-26 12:23:42  listener: fast-path: ran resleep (idle=1392s)
-2026-09-26 12:24:12  listener: fast-path: ran resleep (idle=1423s)
-2026-09-26 12:24:42  listener: fast-path: ran resleep (idle=1453s)
-2026-09-26 12:25:12  listener: fast-path: ran resleep (idle=1483s)
-2026-09-26 12:25:43  listener: fast-path: ran resleep (idle=1513s)
-2026-09-26 12:26:13  listener: fast-path: ran resleep (idle=1544s)
-2026-09-26 12:26:43  listener: fast-path: ran resleep (idle=1574s)
-2026-09-26 12:27:13  listener: fast-path: ran resleep (idle=1604s)
-2026-09-26 12:27:44  listener: fast-path: ran resleep (idle=1635s)
-2026-09-26 12:28:14  listener: fast-path: ran resleep (idle=1665s)
-2026-09-26 12:28:44  listener: fast-path: ran resleep (idle=1695s)
-2026-09-26 12:29:14  listener: fast-path: ran resleep (idle=1725s)
-2026-09-26 12:29:45  listener: fast-path: ran resleep (idle=1756s)
-2026-09-26 12:30:15  listener: fast-path: ran resleep (idle=1786s)
-[2026-09-26 12:30:33] arm: system entering sleep
-[2026-09-26 12:30:34] arm done: session-running=True etl-present=True
-2026-09-26 12:33:24  listener: fast-path: ran resleep (idle=1796s)
-[2026-09-26 12:33:34] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-2026-09-26 12:33:35  listener: ARM    reason=listener-idle idle=183s session-running=True
-2026-09-26 12:33:44  listener: KEEP-ARMED resume=18s ago -> not disarming (idle=3s)
-2026-09-26 12:35:47  listener: fast-path: ran resleep (idle=125s)
-2026-09-26 12:35:49  resleep: ARM    reason=about-to-suspend  session-running=True
-[2026-09-26 12:35:52] arm: system entering sleep
-2026-09-26 12:40:07  listener: fast-path: ran resleep (idle=125s)
-[2026-09-26 12:40:10] arm done: session-running=True etl-present=True
-[2026-09-26 12:40:14] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-2026-09-26 12:40:18  listener: ARM    reason=listener-idle idle=267s session-running=True
-2026-09-26 12:40:28  listener: KEEP-ARMED resume=20s ago -> not disarming (idle=0s)
-2026-09-26 12:40:50  resleep: DISARM reason=user-returned idle=21s
-2026-09-26 12:41:20  listener: ARM    reason=listener-idle idle=52s session-running=True
-2026-09-26 12:42:31  listener: fast-path: ran resleep (idle=122s)
-2026-09-26 12:43:01  listener: fast-path: ran resleep (idle=153s)
-2026-09-26 12:43:31  listener: fast-path: ran resleep (idle=183s)
-2026-09-26 12:44:02  listener: fast-path: ran resleep (idle=213s)
-2026-09-26 12:44:32  listener: fast-path: ran resleep (idle=244s)
-2026-09-26 12:45:02  listener: fast-path: ran resleep (idle=274s)
-2026-09-26 12:45:33  listener: fast-path: ran resleep (idle=304s)
-2026-09-26 12:46:03  listener: fast-path: ran resleep (idle=334s)
-2026-09-26 12:46:33  listener: fast-path: ran resleep (idle=365s)
-2026-09-26 12:47:03  listener: fast-path: ran resleep (idle=395s)
-2026-09-26 12:47:34  listener: fast-path: ran resleep (idle=425s)
-2026-09-26 12:48:04  listener: fast-path: ran resleep (idle=456s)
-2026-09-26 12:48:34  listener: fast-path: ran resleep (idle=486s)
-2026-09-26 12:49:05  listener: fast-path: ran resleep (idle=516s)
-2026-09-26 12:49:35  listener: fast-path: ran resleep (idle=546s)
-2026-09-26 12:50:05  listener: fast-path: ran resleep (idle=577s)
-2026-09-26 12:50:35  listener: fast-path: ran resleep (idle=607s)
-2026-09-26 12:51:06  listener: fast-path: ran resleep (idle=638s)
-2026-09-26 12:51:36  listener: fast-path: ran resleep (idle=668s)
-2026-09-26 12:52:06  listener: fast-path: ran resleep (idle=698s)
-2026-09-26 12:52:37  listener: fast-path: ran resleep (idle=728s)
-2026-09-26 12:53:07  listener: fast-path: ran resleep (idle=759s)
-2026-09-26 12:53:37  listener: fast-path: ran resleep (idle=789s)
-2026-09-26 12:54:08  listener: fast-path: ran resleep (idle=819s)
-2026-09-26 12:54:38  listener: fast-path: ran resleep (idle=850s)
-2026-09-26 12:55:08  listener: fast-path: ran resleep (idle=880s)
-2026-09-26 12:55:39  listener: fast-path: ran resleep (idle=910s)
-2026-09-26 12:56:09  listener: fast-path: ran resleep (idle=940s)
-2026-09-26 12:56:39  listener: fast-path: ran resleep (idle=971s)
-2026-09-26 12:57:09  listener: fast-path: ran resleep (idle=1001s)
-2026-09-26 12:57:40  listener: fast-path: ran resleep (idle=1031s)
-2026-09-26 12:58:10  listener: fast-path: ran resleep (idle=1062s)
-2026-09-26 12:58:40  listener: fast-path: ran resleep (idle=1092s)
-2026-09-26 12:58:50  listener: ARM    reason=listener-idle idle=1102s session-running=True
-2026-09-26 12:59:11  listener: fast-path: ran resleep (idle=1123s)
-2026-09-26 12:59:41  listener: fast-path: ran resleep (idle=1153s)
-2026-09-26 13:00:11  listener: fast-path: ran resleep (idle=1183s)
-2026-09-26 13:00:42  listener: fast-path: ran resleep (idle=1213s)
-2026-09-26 13:01:12  listener: fast-path: ran resleep (idle=1244s)
-2026-09-26 13:01:42  listener: fast-path: ran resleep (idle=1274s)
-2026-09-26 13:02:13  listener: fast-path: ran resleep (idle=1304s)
-2026-09-26 13:02:43  listener: fast-path: ran resleep (idle=1335s)
-2026-09-26 13:03:13  listener: fast-path: ran resleep (idle=1365s)
-2026-09-26 13:03:44  listener: fast-path: ran resleep (idle=1395s)
-2026-09-26 13:04:14  listener: fast-path: ran resleep (idle=1426s)
-2026-09-26 13:04:44  listener: fast-path: ran resleep (idle=1456s)
-2026-09-26 13:05:15  listener: fast-path: ran resleep (idle=1486s)
-2026-09-26 13:05:45  listener: fast-path: ran resleep (idle=1517s)
-2026-09-26 13:06:15  listener: fast-path: ran resleep (idle=1547s)
-2026-09-26 13:06:46  listener: fast-path: ran resleep (idle=1577s)
-2026-09-26 13:07:16  listener: fast-path: ran resleep (idle=1607s)
-2026-09-26 13:07:46  listener: fast-path: ran resleep (idle=1638s)
-2026-09-26 13:08:16  listener: fast-path: ran resleep (idle=1668s)
-2026-09-26 13:08:47  listener: fast-path: ran resleep (idle=1698s)
-2026-09-26 13:09:17  listener: fast-path: ran resleep (idle=1729s)
-2026-09-26 13:09:47  listener: fast-path: ran resleep (idle=1759s)
-2026-09-26 13:10:18  listener: fast-path: ran resleep (idle=1789s)
-2026-09-26 13:10:48  listener: fast-path: ran resleep (idle=1820s)
-2026-09-26 13:11:18  listener: fast-path: ran resleep (idle=1850s)
-2026-09-26 13:11:49  listener: fast-path: ran resleep (idle=1880s)
-[2026-09-26 13:12:01] arm: system entering sleep
-2026-09-26 16:55:06  listener: fast-path: ran resleep (idle=1890s)
-2026-09-26 16:55:10  listener: ARM    reason=listener-idle idle=13387s session-running=False
-[2026-09-26 16:55:11] arm done: session-running=False etl-present=True
-[2026-09-26 16:55:16] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-2026-09-26 16:55:17  listener: ARM    reason=listener-idle idle=13397s session-running=False
-2026-09-26 16:55:18  resleep: ARM    reason=idle-approach idle=13390s armAt=600s  session-running=True
-2026-09-26 16:55:18  resleep: ARM    reason=about-to-suspend  session-running=True
-2026-09-26 16:55:18  resleep: ARM    reason=about-to-suspend  session-running=True
-2026-09-26 16:55:27  listener: KEEP-ARMED resume=19s ago -> not disarming (idle=5s)
-[2026-09-26 16:55:34] arm: system entering sleep
-[2026-09-26 16:55:35] arm done: session-running=True etl-present=True
-2026-09-26 17:22:17  listener: fast-path: ran resleep (idle=1614s)
-2026-09-26 17:22:24  resleep: ARM    reason=idle-approach idle=1615s armAt=600s  session-running=False
-[2026-09-26 17:22:25] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
-2026-09-26 17:22:25  resleep: ARM    reason=about-to-suspend  session-running=True
-2026-09-26 17:22:28  listener: KEEP-ARMED resume=10s ago -> not disarming (idle=0s)
-[2026-09-26 17:22:41] arm: system entering sleep
-[2026-09-26 17:22:42] arm done: session-running=True etl-present=True
-[2026-09-26 17:23:01] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
+﻿2026-09-27 00:17:15  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:17:25  listener: DISARM reason=listener-user-active idle=0s
+[2026-09-27 00:17:31] arm: system entering sleep
+[2026-09-27 00:17:32] arm done: session-running=True etl-present=True
+2026-09-27 00:19:57  listener: fast-path: ran resleep (idle=145s)
+[2026-09-27 00:20:01] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
+2026-09-27 00:20:05  listener: ARM    reason=listener-idle idle=155s session-running=True
+2026-09-27 00:20:15  listener: KEEP-ARMED resume=20s ago -> not disarming (idle=1s)
+2026-09-27 00:22:18  listener: fast-path: ran resleep (idle=123s)
+2026-09-27 00:22:48  listener: fast-path: ran resleep (idle=153s)
+2026-09-27 00:23:19  listener: fast-path: ran resleep (idle=184s)
+2026-09-27 00:23:49  listener: fast-path: ran resleep (idle=214s)
+2026-09-27 00:24:19  listener: fast-path: ran resleep (idle=244s)
+2026-09-27 00:24:50  listener: fast-path: ran resleep (idle=275s)
+2026-09-27 00:25:19  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:25:29  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:25:40  listener: DISARM reason=listener-user-active idle=1s
+2026-09-27 00:25:50  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:26:00  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:26:10  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:26:21  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:26:31  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:26:41  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:26:51  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:27:01  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:27:12  listener: DISARM reason=listener-user-active idle=2s
+2026-09-27 00:27:22  listener: DISARM reason=listener-user-active idle=12s
+2026-09-27 00:29:14  listener: fast-path: ran resleep (idle=123s)
+2026-09-27 00:29:44  listener: fast-path: ran resleep (idle=154s)
+2026-09-27 00:30:15  listener: fast-path: ran resleep (idle=184s)
+2026-09-27 00:30:45  listener: fast-path: ran resleep (idle=214s)
+2026-09-27 00:30:48  resleep: ARM    reason=about-to-suspend  session-running=True
+[2026-09-27 00:30:52] arm: system entering sleep
+[2026-09-27 00:30:53] arm done: session-running=True etl-present=True
+2026-09-27 00:31:02  listener: DISARM reason=listener-user-active idle=11s
+[2026-09-27 00:31:09] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
+2026-09-27 00:32:03  listener: ARM    reason=listener-idle idle=46s session-running=True
+2026-09-27 00:32:54  listener: ARM    reason=listener-idle idle=97s session-running=True
+2026-09-27 00:33:25  listener: fast-path: ran resleep (idle=128s)
+2026-09-27 00:33:35  listener: KEEP-ARMED resume=152s ago -> not disarming (idle=0s)
+2026-09-27 00:34:05  listener: DISARM reason=listener-user-active idle=16s
+2026-09-27 00:34:36  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:34:46  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:34:56  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:35:07  listener: DISARM reason=listener-user-active idle=4s
+2026-09-27 00:35:17  listener: DISARM reason=listener-user-active idle=14s
+2026-09-27 00:37:09  listener: fast-path: ran resleep (idle=126s)
+2026-09-27 00:37:39  listener: fast-path: ran resleep (idle=156s)
+2026-09-27 00:38:09  listener: fast-path: ran resleep (idle=186s)
+2026-09-27 00:38:40  listener: fast-path: ran resleep (idle=217s)
+2026-09-27 00:39:10  listener: fast-path: ran resleep (idle=247s)
+2026-09-27 00:39:40  listener: ARM    reason=listener-idle idle=277s session-running=True
+2026-09-27 00:39:41  listener: fast-path: ran resleep (idle=277s)
+2026-09-27 00:40:12  listener: fast-path: ran resleep (idle=308s)
+2026-09-27 00:40:42  listener: fast-path: ran resleep (idle=339s)
+2026-09-27 00:41:12  listener: fast-path: ran resleep (idle=369s)
+2026-09-27 00:41:22  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:41:32  listener: DISARM reason=listener-user-active idle=0s
+2026-09-27 00:41:42  listener: DISARM reason=listener-user-active idle=2s
+2026-09-27 00:41:52  listener: DISARM reason=listener-user-active idle=0s
+[2026-09-27 00:41:59] arm: system entering sleep
+[2026-09-27 00:42:43] arm done: session-running=False etl-present=True
+[2026-09-27 00:42:50] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
+2026-09-27 00:42:54  listener: ARM    reason=listener-idle idle=55s session-running=True
+2026-09-27 00:43:04  listener: KEEP-ARMED resume=21s ago -> not disarming (idle=7s)
+2026-09-27 00:45:06  listener: fast-path: ran resleep (idle=128s)
+2026-09-27 00:45:09  resleep: ARM    reason=about-to-suspend  session-running=True
+[2026-09-27 00:45:11] arm: system entering sleep
+[2026-09-27 00:45:12] arm done: session-running=True etl-present=True
+2026-09-27 00:46:39  listener: fast-path: ran resleep (idle=128s)
+[2026-09-27 00:46:48] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
+2026-09-27 00:46:51  listener: ARM    reason=listener-idle idle=100s session-running=True
+2026-09-27 00:47:01  listener: KEEP-ARMED resume=20s ago -> not disarming (idle=7s)
+2026-09-27 00:49:03  listener: fast-path: ran resleep (idle=128s)
+2026-09-27 00:49:06  resleep: ARM    reason=about-to-suspend  session-running=True
+[2026-09-27 00:49:08] arm: system entering sleep
+[2026-09-27 00:49:09] arm done: session-running=True etl-present=True
+2026-09-27 00:50:34  listener: fast-path: ran resleep (idle=128s)
+[2026-09-27 00:50:42] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm
+2026-09-27 00:50:46  listener: ARM    reason=listener-idle idle=98s session-running=True
+2026-09-27 00:50:56  listener: KEEP-ARMED resume=20s ago -> not disarming (idle=7s)
+2026-09-27 00:52:58  listener: fast-path: ran resleep (idle=129s)
+2026-09-27 00:53:29  listener: fast-path: ran resleep (idle=160s)
+2026-09-27 00:53:59  listener: fast-path: ran resleep (idle=190s)
+2026-09-27 00:54:29  listener: fast-path: ran resleep (idle=220s)
+2026-09-27 00:55:00  listener: fast-path: ran resleep (idle=251s)
+2026-09-27 00:55:30  listener: fast-path: ran resleep (idle=281s)
+2026-09-27 00:56:00  listener: fast-path: ran resleep (idle=311s)
+2026-09-27 00:56:31  listener: fast-path: ran resleep (idle=342s)
+2026-09-27 00:57:01  listener: fast-path: ran resleep (idle=372s)
+2026-09-27 00:57:31  listener: fast-path: ran resleep (idle=402s)
+2026-09-27 00:58:02  listener: fast-path: ran resleep (idle=433s)
+2026-09-27 00:58:32  listener: fast-path: ran resleep (idle=463s)
+2026-09-27 00:59:02  listener: fast-path: ran resleep (idle=493s)
+2026-09-27 00:59:33  listener: fast-path: ran resleep (idle=524s)
+2026-09-27 01:00:03  listener: fast-path: ran resleep (idle=554s)
+2026-09-27 01:00:33  listener: fast-path: ran resleep (idle=584s)
+2026-09-27 01:01:04  listener: fast-path: ran resleep (idle=615s)
+2026-09-27 01:01:34  listener: fast-path: ran resleep (idle=645s)
+2026-09-27 01:02:05  listener: fast-path: ran resleep (idle=676s)
+2026-09-27 01:02:35  listener: fast-path: ran resleep (idle=706s)
+2026-09-27 01:03:05  listener: fast-path: ran resleep (idle=736s)
+2026-09-27 01:03:35  listener: fast-path: ran resleep (idle=766s)
+2026-09-27 01:04:06  listener: fast-path: ran resleep (idle=797s)
+2026-09-27 01:04:36  listener: fast-path: ran resleep (idle=827s)
+2026-09-27 01:04:39  resleep: ARM    reason=idle-approach idle=828s armAt=600s  session-running=True
+2026-09-27 01:05:06  listener: fast-path: ran resleep (idle=857s)
+2026-09-27 01:05:37  listener: fast-path: ran resleep (idle=888s)
+2026-09-27 01:06:07  listener: fast-path: ran resleep (idle=918s)
+2026-09-27 01:06:37  listener: fast-path: ran resleep (idle=948s)
+2026-09-27 01:07:08  listener: fast-path: ran resleep (idle=979s)
+2026-09-27 01:07:38  listener: fast-path: ran resleep (idle=1009s)
+2026-09-27 01:08:08  listener: fast-path: ran resleep (idle=1039s)
+2026-09-27 01:08:39  listener: fast-path: ran resleep (idle=1070s)
+2026-09-27 01:09:09  listener: fast-path: ran resleep (idle=1100s)
+2026-09-27 01:09:39  listener: fast-path: ran resleep (idle=1130s)
+2026-09-27 01:10:10  listener: fast-path: ran resleep (idle=1161s)
+2026-09-27 01:10:40  listener: fast-path: ran resleep (idle=1191s)
+2026-09-27 01:11:10  listener: fast-path: ran resleep (idle=1221s)
+2026-09-27 01:11:41  listener: fast-path: ran resleep (idle=1252s)
+2026-09-27 01:11:50  listener: DISARM reason=listener-user-active idle=2s
+[2026-09-27 01:12:01] arm: system entering sleep
+2026-09-27 08:42:28  listener: DISARM reason=listener-user-active idle=1s
+[2026-09-27 08:42:30] arm done: session-running=False etl-present=True
+[2026-09-27 08:42:33] capture done: etl_present=True etl_kept_as=drv-ndis-trace-last.etl, waiting for the next sleep to re-arm

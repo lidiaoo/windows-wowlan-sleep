@@ -12,8 +12,22 @@
        is required, so this never fights a human.
 
   Guards (all logged):
-    * wake source gate   - only Wi-Fi NIC wakes are eligible; power button / keyboard / mouse /
-                           timer wakes are treated as intentional ("wake-source-*").
+    * wake source gate   - only wakes attributed to the Wi-Fi NIC are eligible ("wake-source-*").
+                           The attribution is rebuilt from the adapters present on THIS machine
+                           (their descriptions, powercfg /lastwake, powercfg /devicequery
+                           wake_armed), never from a NIC model name written into this script: a
+                           swapped card or a plain driver reinstall changes the name Windows puts
+                           into the wake source, and a hardcoded name then classifies every wake as
+                           "not the NIC" while the reason chain says the opposite.
+                           kinds: wifi-nic | eth-nic | other-device | timer | fixed-feature |
+                           fixed-feature-nic-suspect (no device named, no wake timer programmed,
+                           NICs are the only wake-armed devices -> probably a NIC wake routed
+                           through the embedded controller; eligible only with
+                           -UnattributedWakePolicy=resleep-if-unattended)
+    * link-state hint    - os-wlanlink-evidence LINK_LOST is a HINT only: every resume re-associates,
+                           so it also fires on magic-packet wakes (see 00-README 8). It produces
+                           NON_MAGIC_WLAN_LINK_LOST only for a wifi-nic wake; otherwise it shows up
+                           as link=... in the log line and decides nothing.
     * magic packet gate  - if the NDIS ETW capture (drv-wakereason-last.txt) says this wake was a
                            magic packet, never re-sleep (MagicPacketPolicy=skip).
     * remote-in-use gate - an established *inbound* TCP connection (remote desktop / RustDesk /
@@ -42,6 +56,7 @@ param(
   [int]$MinGapMinutes = 0,
   [int]$UserPresentSkipLogMinutes = 5,
   [ValidateSet('wifi','any')][string]$WakeSourceFilter = 'wifi',
+  [ValidateSet('skip','resleep-if-unattended')][string]$UnattributedWakePolicy = 'skip',
   [bool]$SkipIfRemoteSession = $true,
   [ValidateSet('skip','ignore')][string]$MagicPacketPolicy = 'skip',
   [int]$WakeSourceMaxAgeMinutes = 0,
@@ -70,14 +85,29 @@ function Log([string]$m) {
 function TraceLog([string]$m) {
   try {
     Add-Content -Path $TraceLog -Value ((Get-Date -Format 'yyyy-MM-dd HH:mm:ss') + '  resleep: ' + $m) -Encoding UTF8
-    if ((Get-Item $TraceLog).Length -gt 512KB) { Get-Content $TraceLog | Select-Object -Last 200 | Set-Content -Path $TraceLog -Encoding UTF8 }
+    if ((Get-Item $TraceLog).Length -gt 512KB) {
+      # materialise the kept lines FIRST: piping Get-Content straight into Set-Content on the same
+      # path lets the writer truncate the file while the reader is still streaming through it, and
+      # the log collapses to whatever happened to be buffered (that cost the whole history once)
+      $keep = @(Get-Content $TraceLog -ErrorAction SilentlyContinue | Select-Object -Last 200)
+      if ($keep.Count -gt 0) {
+        $tmp = $TraceLog + '.tmp'
+        Set-Content -Path $tmp -Value $keep -Encoding UTF8
+        Move-Item -Path $tmp -Destination $TraceLog -Force
+      }
+    }
   } catch {}
 }
 
-# ---- rotate dec-resleep.log at 1 MB ----
+# ---- rotate dec-resleep.log at 1 MB (read into memory before writing: see the note above) ----
 try {
   if ((Test-Path $LogFile) -and ((Get-Item $LogFile).Length -gt 1MB)) {
-    Get-Content $LogFile | Select-Object -Last 1000 | Set-Content -Path $LogFile -Encoding UTF8
+    $keep = @(Get-Content $LogFile -ErrorAction SilentlyContinue | Select-Object -Last 2000)
+    if ($keep.Count -gt 0) {
+      $tmp = $LogFile + '.tmp'
+      Set-Content -Path $tmp -Value $keep -Encoding UTF8
+      Move-Item -Path $tmp -Destination $LogFile -Force
+    }
   }
 } catch {}
 
@@ -157,11 +187,45 @@ try {
 } catch { Log ('ERROR helper unavailable: ' + $_.Exception.Message) }
 if (-not $helperOk) { exit 1 }
 
+# ---------------- which adapters can wake THIS machine (live inventory, no model names in code) --
+# A wake is attributed to a device by NAME only, and that name is the adapter description: it
+# changes when the card is swapped and even on a plain driver reinstall (Windows appends " #2").
+# Keep the name set out of the script and rebuild it from the machine on every run.
+$wlanDesc = @(); $ethDesc = @()
+try {
+  foreach ($a in @(Get-NetAdapter -Physical -ErrorAction SilentlyContinue)) {
+    $ad = ([string]$a.InterfaceDescription).Trim()
+    if (-not $ad) { continue }
+    if ($a.MediaType -eq 'Native 802.11' -or $ad -match '(?i)wi-fi|wireless|wlan|802.11') { $wlanDesc += $ad }
+    elseif ($ad -match '(?i)ethernet|gigabit')                                               { $ethDesc  += $ad }
+  }
+} catch {}
+function Expand-NameToken([string[]]$tokens) {
+  # WakeSourceText carries the plain description; the " #N" suffix of a reinstall is not part of
+  # it, so both spellings have to be tried
+  $r = @()
+  foreach ($t in $tokens) {
+    if (-not $t) { continue }
+    $r += $t
+    $b = ($t -replace ' #+[0-9]+$', '').Trim()
+    if ($b -and $b -ne $t) { $r += $b }
+  }
+  return @($r | Select-Object -Unique)
+}
+function Find-NameToken([string]$text, [string[]]$tokens) {
+  if ([string]::IsNullOrWhiteSpace($text)) { return '' }
+  foreach ($t in $tokens) { if ($t -and $text.IndexOf($t, [System.StringComparison]::OrdinalIgnoreCase) -ge 0) { return $t } }
+  return ''
+}
+$wlanTokens = Expand-NameToken $wlanDesc
+$ethTokens  = Expand-NameToken $ethDesc
+
 # ---------------- what woke the system last? (Power-Troubleshooter event 1) ----------------
 $wakeKind = 'unknown'
 $wakeText = ''
 $wakeType = ''
 $wakeTime = $null
+$wakeWho  = ''
 try {
   $ev = Get-WinEvent -FilterHashtable @{LogName='System'; ProviderName='Microsoft-Windows-Power-Troubleshooter'; Id=1} -MaxEvents 1 -ErrorAction SilentlyContinue
   if ($ev) {
@@ -171,12 +235,58 @@ try {
     $wakeText = [string]$d['WakeSourceText']
     $wakeType = [string]$d['WakeSourceType']
     if ($d['WakeTime']) { try { $wakeTime = ([datetime]$d['WakeTime']).ToLocalTime() } catch {} }
-    if     ($wakeText -match '(?i)AX1650i|Wi-?Fi|Wireless')  { $wakeKind = 'wifi-nic' }
-    elseif ($wakeText -match '(?i)E2600|Ethernet')           { $wakeKind = 'eth-nic' }
-    elseif ([string]::IsNullOrWhiteSpace($wakeText))         { $wakeKind = 'fixed-feature-or-timer' }
-    else                                                      { $wakeKind = 'other-device' }
   } else { $wakeKind = 'no-wake-event' }
 } catch { $wakeKind = 'wake-read-error' }
+
+if ($wakeKind -eq 'unknown') {
+  $hitW = Find-NameToken $wakeText $wlanTokens
+  $hitE = Find-NameToken $wakeText $ethTokens
+  if     ($hitW) { $wakeKind = 'wifi-nic'; $wakeWho = 'name:' + $hitW }
+  elseif ($hitE) { $wakeKind = 'eth-nic';  $wakeWho = 'name:' + $hitE }
+  elseif ($wakeText -match '(?i)wi-fi|wireless|wlan|802.11') { $wakeKind = 'wifi-nic'; $wakeWho = 'name:generic-wlan' }
+  elseif ($wakeText -match '(?i)ethernet|gigabit')           { $wakeKind = 'eth-nic';  $wakeWho = 'name:generic-eth' }
+  else {
+    # Windows named no device. Ask the OS a second time (powercfg /lastwake prints the same names -
+    # its labels are localized, an adapter name is not), then look for a sign that the wake was
+    # intentional after all: a programmed wake timer, or a wake-armed device that is not one of
+    # our NICs (its line is the one that does not match any adapter description).
+    $lwText = ''
+    try { $lwText = ((& powercfg /lastwake 2>$null) | Out-String) } catch {}
+    $hitLW = Find-NameToken $lwText $wlanTokens
+    $hitLE = Find-NameToken $lwText $ethTokens
+    $armedText = ''
+    try { $armedText = ((& powercfg /devicequery wake_armed 2>$null) | Out-String) } catch {}
+    $armedWlan  = (Find-NameToken $armedText $wlanTokens) -ne ''
+    $armedOther = 0
+    foreach ($al in ($armedText -split "`r?`n")) {
+      $at = $al.Trim(); if ($at -eq '') { continue }
+      if ((Find-NameToken $at $wlanTokens) -eq '' -and (Find-NameToken $at $ethTokens) -eq '') { $armedOther++ }
+    }
+    $timerProgrammed = $false
+    try {
+      $kp = Get-WinEvent -FilterHashtable @{LogName='System'; ProviderName='Microsoft-Windows-Kernel-Power'; Id=107} -MaxEvents 1 -ErrorAction SilentlyContinue
+      if ($kp) {
+        $xp = [xml]$kp.ToXml()
+        foreach ($pn in $xp.Event.EventData.Data) {
+          $pv = [string]$pn.'#text'
+          if (($pn.Name -like 'ProgrammedWakeTime*') -and $pv -and ($pv -notlike '1601-01-01*')) { $timerProgrammed = $true }
+        }
+      }
+    } catch {}
+    if     ($hitLW)           { $wakeKind = 'wifi-nic'; $wakeWho = 'lastwake:' + $hitLW }
+    elseif ($hitLE)           { $wakeKind = 'eth-nic';  $wakeWho = 'lastwake:' + $hitLE }
+    elseif ($timerProgrammed) { $wakeKind = 'timer';    $wakeWho = 'kernel-power-107' }
+    else {
+      $wakeKind = 'fixed-feature'
+      # On some machines a NIC wake is handed to Windows through the embedded controller: the wake
+      # is reported as a fixed feature (powercfg prints the power button), no device name, no NDIS
+      # wake-signal event. If the only wake-armed devices are NICs and no timer was programmed,
+      # the wake was very likely a NIC anyway - record that, but never as a certainty.
+      if ($armedWlan -and $armedOther -eq 0) { $wakeKind = 'fixed-feature-nic-suspect'; $wakeWho = 'only-nic-armed' }
+      else { $wakeWho = 'armed-non-nic=' + $armedOther }
+    }
+  }
+}
 $wakeStamp = '?'
 if ($wakeTime) { $wakeStamp = $wakeTime.ToString('MM-dd HH:mm:ss') }
 
@@ -186,6 +296,7 @@ if ($wakeTime) { $wakeStamp = $wakeTime.ToString('MM-dd HH:mm:ss') }
 # the same wake we are looking at.
 $reasonClass = 'UNKNOWN'
 $reasonRaw   = ''
+$drvWlanSignal = $false
 try {
   $mk = Join-Path $BaseDir 'drv-wakereason-last.txt'
   if (Test-Path $mk) {
@@ -201,12 +312,30 @@ try {
           if ([math]::Abs(($mw - $wakeTime).TotalSeconds) -lt 15) {
             $reasonClass = [string]$mCls.Groups[1].Value
             if ($mRaw.Success) { $reasonRaw = [string]$mRaw.Groups[1].Value }
+            # "The network adapter indicated a wake signal ... Wake reason: X" is the interface
+            # telling Windows that IT woke the host. Only the Wi-Fi-specific reasons may be used to
+            # name the Wi-Fi NIC as the wake source: a wired NIC can report media (cable) changes,
+            # never "AP Association Lost".
+            if ($reasonRaw -match '(?i)wake signal' -and
+                $reasonClass -match '^NON_MAGIC_(AP_ASSOC_LOST|AP_DISASSOC|ROAM|GTK_REKEY|4WAY_HANDSHAKE)$') {
+              $drvWlanSignal = $true
+            }
           }
         } catch {}
       }
     }
   }
 } catch {}
+
+# ---------------- attribution upgrade: the driver's own wake signal ----------------
+# The OS attribution above is not always able to name the device (after the Wi-Fi card was swapped
+# this box reports "fixed feature / power button" for every wake), yet the miniport still reports a
+# wake signal. When it does, and names a Wi-Fi-only reason, the wake WAS the Wi-Fi NIC - and a
+# driver-reported non-magic wake is exactly the case that has to go back to sleep.
+if ($drvWlanSignal -and ($wakeKind -ne 'wifi-nic') -and ($wakeKind -ne 'eth-nic')) {
+  $wakeKind = 'wifi-nic'
+  $wakeWho  = 'driver:' + $reasonClass
+}
 
 # ---------------- UDP magic-packet / marker evidence ----------------
 # wol-listener.ps1 records the last magic packet (or sender marker) it received. A WoL sender
@@ -258,13 +387,15 @@ try {
 # history file. Record it here as well (one line per wake+class, deduped).
 # ---------------- OS-level WLAN link evidence (driver independent) ----------------
 # wlan-wake-evidence.ps1 compares the pre-sleep SSID/BSSID with the post-resume one and measures how
-# fast the default gateway answers. An intact association (magic-packet wake, handled in firmware)
-# leaves SSID/BSSID unchanged and the LAN answers at once; an AP loss during sleep shows up as
-# "not associated at resume", a changed BSSID or a slow gateway. Use it whenever the NDIS side
-# could not name the reason - this is what makes the judgement work on any Wi-Fi NIC and any
-# Windows version.
+# fast the default gateway answers. That state is a HINT, not a cause: every resume re-associates
+# (or roams between APs), so "not associated right after the resume" also shows up on wakes that
+# were definitely asked for - this box produced LINK_LOST on the magic-packet wake of 12:00
+# (bssid-changed) and LINK_INTACT on the one at 12:40. It may therefore only contribute the
+# NON_MAGIC_WLAN_LINK_LOST verdict when the wake itself is attributed to the Wi-Fi NIC; otherwise
+# it goes into the log as link=... and decides nothing.
 $wlanEvidence = ''
 $wlanWhy = ''
+$wlanHint = ''
 try {
   $we = Join-Path $BaseDir 'os-wlanlink-evidence.txt'
   if ((Test-Path $we) -and $wakeTime -and ($reasonClass -eq 'UNKNOWN' -or $reasonClass -like 'NO_DATA*')) {
@@ -278,7 +409,10 @@ try {
         if ([math]::Abs(($ewt - $wakeTime).TotalSeconds) -lt 45) {
           $wlanEvidence = $mEc.Groups[1].Value.Trim()
           if ($mEy.Success) { $wlanWhy = $mEy.Groups[1].Value.Trim() }
-          if ($wlanEvidence -eq 'LINK_LOST') { $reasonClass = 'NON_MAGIC_WLAN_LINK_LOST' }
+          if ($wlanEvidence -eq 'LINK_LOST') {
+            if ($wakeKind -eq 'wifi-nic') { $reasonClass = 'NON_MAGIC_WLAN_LINK_LOST' }
+            else { $wlanHint = 'LINK_LOST' }
+          } else { $wlanHint = $wlanEvidence }
         }
       } catch {}
     }
@@ -287,7 +421,7 @@ try {
 
 $reasonSrc = 'ndis-marker-or-none'
 if ($udpMagic) { $reasonSrc = 'udp-listener' }
-if ($wlanEvidence) { $reasonSrc = 'wlan-evidence' }
+if ($reasonClass -eq 'NON_MAGIC_WLAN_LINK_LOST') { $reasonSrc = 'wlan-evidence' }
 try {
   if ($reasonClass -ne 'UNKNOWN' -and $wakeTime) {
     $hFile  = Join-Path $BaseDir 'dec-wakereason-history.log'
@@ -305,8 +439,13 @@ try {
 } catch {}
 
 # ---------------- unattended-wake detection (tier A) ----------------
+# A wake the OS cannot attribute to a device, but which can only have come from a NIC (see the
+# classification above), counts as a NIC wake only when -UnattributedWakePolicy allows it. With the
+# default ('skip') the engine keeps its hands off unattributed wakes: honest, but it means such a
+# wake is never re-slept until the driver or the OS starts naming the NIC again.
+$nicWakeEligible = ($wakeKind -eq 'wifi-nic') -or (($wakeKind -eq 'fixed-feature-nic-suspect') -and ($UnattributedWakePolicy -eq 'resleep-if-unattended'))
 $sinceWakeSec = -1
-if ($wakeTime -and $wakeKind -eq 'wifi-nic') { $sinceWakeSec = ((Get-Date) - $wakeTime).TotalSeconds }
+if ($wakeTime -and $nicWakeEligible) { $sinceWakeSec = ((Get-Date) - $wakeTime).TotalSeconds }
 # this box's clock gets re-synced in jumps (we have seen +- minutes); a negative value just means
 # "the wake is right now" - clamp it instead of disabling the fast path
 if ($sinceWakeSec -lt 0 -and $sinceWakeSec -gt -600) { $sinceWakeSec = 0 }
@@ -386,6 +525,10 @@ if ($parsed) {
       if ($idle -lt 60) { $disarm = 'user-returned idle=' + [int]$idle + 's' }
       else {
         try {
+          # the listener arms the session as well and does not write this marker; adopt such a
+          # session instead of throwing away the age check (a missing file used to produce a
+          # PathNotFound error every run and left the trace armed indefinitely)
+          if (-not (Test-Path $ArmMarker)) { Set-Content -Path $ArmMarker -Value (Get-Date -Format 'yyyy-MM-dd HH:mm:ss') -Encoding ASCII }
           $since = [datetime]::Parse((Get-Content $ArmMarker -Raw).Trim())
           if (((Get-Date) - $since).TotalMinutes -gt $ArmMaxMinutes) { $disarm = 'armed-too-long minutes=' + [int]((Get-Date) - $since).TotalMinutes }
         } catch {}
@@ -418,7 +561,7 @@ if (Test-Path $StampFile) {
   } catch {}
 }
 
-$detail = 'wake=' + $wakeKind + '@' + $wakeStamp + '  reason=' + $reasonClass + '  src=' + $reasonSrc + '  udp=[' + $udpMagic + ']' +
+$detail = 'wake=' + $wakeKind + '@' + $wakeStamp + '  who=' + $wakeWho + '  reason=' + $reasonClass + '  src=' + $reasonSrc + '  link=' + $wlanHint + '  udp=[' + $udpMagic + ']' +
           '  unattended=' + ($postWake -and $noInputSinceSleep) + '  sinceWake=' + [int]$sinceWakeSec + 's' +
           '  idle=' + [int]$idle + 's  sections=' + $seen +
           '  display=' + $displayActive + '  audio=' + $audioActive + '  update=' + $updateActive +
@@ -454,7 +597,7 @@ if ($postWake -and $noInputSinceSleep -and -not $DryRun -and $sinceWakeSec -lt $
 }
 
 $why = @()
-if ($WakeSourceFilter -eq 'wifi' -and $wakeKind -ne 'wifi-nic') { $why += ('wake-source-' + $wakeKind) }
+if ($WakeSourceFilter -eq 'wifi' -and -not $nicWakeEligible) { $why += ('wake-source-' + $wakeKind) }
 if ($MagicPacketPolicy -eq 'skip' -and $reasonClass -eq 'MAGIC_PACKET') {
   if ($udpMagic) { $why += ('magic-packet-wake-udp-' + $udpMagic) } else { $why += 'magic-packet-wake' }
 }

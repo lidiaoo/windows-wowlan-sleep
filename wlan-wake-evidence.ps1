@@ -39,7 +39,15 @@ $PreFile = Join-Path $BaseDir 'os-wlanlink-presleep.txt'
 function Log3([string]$m) {
   try {
     Add-Content -Path $OutLog -Value ((Get-Date -Format 'yyyy-MM-dd HH:mm:ss') + '  ' + $m) -Encoding UTF8
-    if ((Get-Item $OutLog).Length -gt 256KB) { Get-Content $OutLog | Select-Object -Last 200 | Set-Content -Path $OutLog -Encoding UTF8 }
+    if ((Get-Item $OutLog).Length -gt 256KB) {
+      # materialise first: writing the same path while Get-Content still streams truncates it
+      $keep = @(Get-Content $OutLog -ErrorAction SilentlyContinue | Select-Object -Last 200)
+      if ($keep.Count -gt 0) {
+        $tmp = $OutLog + '.tmp'
+        Set-Content -Path $tmp -Value $keep -Encoding UTF8
+        Move-Item -Path $tmp -Destination $OutLog -Force
+      }
+    }
   } catch {}
 }
 

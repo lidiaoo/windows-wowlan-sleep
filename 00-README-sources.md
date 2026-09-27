@@ -61,16 +61,31 @@
 
 1. `pkt-` 抓到 `magic` 或 `marker` → **判为魔法包唤醒 → 永不回睡**
 2. `drv-` 明确给出 `NON_MAGIC_*`（如 `AP Association Lost`） → 按非魔法处理（无人时快速回睡）
-3. `os-` 给出 `LINK_LOST`（恢复瞬间未关联 / BSSID 变化 / 网关过慢） → 判为 `NON_MAGIC_WLAN_LINK_LOST`
-4. 三条都拿不到 → **不猜**：本地键鼠空闲 ≥15 分钟且无远程连接才回睡
-5. 任何情况下 `remote-in-use`（有入站远程会话）、`display-in-use`（全屏视频）、`media-playing`、`update-running` 都会挡住回睡
+3. 唤醒源归属（`wake=` 字段）——两条独立来源，先成立者定：
+   - `drv-` 事件 10305 原文 “The network adapter indicated a wake signal … Wake reason: X” 里是**无线专属原因**
+     （`AP Association Lost` / `AP Disassoc` / `Roam` / `GTK rekey` / `4-Way`）→ 直接判 `wifi-nic`
+     （`who=driver:NON_MAGIC_*`）。这是网卡自己说「是我唤醒的」，比 Windows 的归属更强：
+     换网卡后 Windows 已经不再把唤醒归给设备（`powercfg /lastwake` 一律写「固定功能/电源按钮」），
+     但驱动仍然照报，所以 **`NON_MAGIC_AP_ASSOC_LOST` 这类驱动明确的非魔法唤醒照旧回睡**。
+     有线网卡只可能报 media（网线）变化，不会报 AP 关联丢失，因此这个推断是安全的。
+   - 没有驱动唤醒信号时，用本机现存网卡名单（描述 + 去掉 ` #N` 的描述）匹配 `WakeSourceText`、
+     再匹配 `powercfg /lastwake` 输出里的设备名：
+     `wifi-nic` 才有资格快速回睡；`eth-nic` / `other-device` / `timer` 视为有意唤醒（`wake-source-*`）；
+     `fixed-feature-nic-suspect`（Windows 没给设备名、没有唤醒定时器、唯一武装的唤醒设备是网卡、驱动也没报）
+     默认 `-UnattributedWakePolicy=skip` 不回睡，改成 `resleep-if-unattended` 才在「上次入睡后无人操作」前提下回睡。
+4. `os-` 的 `LINK_LOST` **只是线索**（`link=` 字段），不单独构成结论：只有当 `wake=wifi-nic` 时才升级为
+   `NON_MAGIC_WLAN_LINK_LOST`，否则不影响判定（见第 8 节）。
+5. 三条都拿不到 → **不猜**：本地键鼠空闲 ≥15 分钟且无远程连接才回睡
+6. 任何情况下 `remote-in-use`（有入站远程会话）、`display-in-use`（全屏视频）、`media-playing`、`update-running` 都会挡住回睡
 
 ## 6. 常见问题 → 该看哪个文件
 
 | 问题 | 看这里 |
 |---|---|
 | 这次是不是魔法包唤醒？ | `dec-resleep.log` 的 `reason=` + `src=`；原始证据在 `pkt-magicpacket-seen.log` |
-| 为什么历史里没有驱动原因？ | `drv-wakereason-history.log` 的 `etl_present/etl_mb`，再看 `trace-arm-history.log` 有没有 ARM |
+| 为什么历史里没有驱动原因？ | `drv-wakereason-history.log` 的 `etl_present/etl_mb`，再看 `trace-arm-history.log` 有没有 ARM | 
+| 判定说「不是网卡」但理由又是 `NON_MAGIC_WLAN_LINK_LOST`？ | 说明出现了矛盾：看 `dec-resleep.log` 行里的 `who=`（归属依据：`name:` / `lastwake:` / `only-nic-armed`）和 `link=`（线索）。`who=` 里的名字必须和 `Get-NetAdapter` 里现存网卡对得上 |
+| 换网卡之后一直不回睡？ | `dec-resleep.log` 的 `wake=`：`fixed-feature-nic-suspect` 说明 Windows 没把唤醒归给设备名（只有网卡是武装设备）→ 要么改成 `-UnattributedWakePolicy=resleep-if-unattended`，要么先把网卡的报告行为修好（`*WakeOnPattern=0` 减少非魔法唤醒） |
 | 这套东西还在运行吗？ | `dec-resleep-heartbeat.txt` 的时间戳（2.5 分钟内即正常） |
 | 关键睡眠期间追踪开着没有？ | `trace-arm-history.log`：`ARM` / `KEEP-ARMED` / `DISARM` / `capture done` |
 | 想调链路判据的阈值？ | `os-wlanlink-evidence.log` 里的 `gwMs` / `bssid` / `ev=` 分布 |
@@ -94,5 +109,27 @@ logman stop HermesNdisWake -ets
 
 - **睡眠中唤醒主机的那个魔法包在网卡固件里就被消费掉了**，主机侧任何抓包（含本项目）都看不到它本身；Linux 同样如此。`pkt-` 抓到的是回醒之后到达的重复包/标记包。
 - **驱动是否上报唤醒原因由厂商决定**，本机 Intel/Killer 时而沉默 → 所以需要 `os-` 和 `pkt-` 两条备用链。
-- **`os-` 的判据是代理指标**（恢复瞬间是否已关联 / BSSID 是否变化 / 网关响应毫秒），阈值 3000 ms 为保守初值；当 `drv-` 同时给出真值时即为标注样本，用来校准。
+- **换网卡 / 重装驱动会改掉“唤醒源字符串”**（本机 AX1650i → AX210，接口名 WLAN → WLAN 5，描述后面还会多一个 ` #2`）。
+  判定里的网卡名单必须每次从本机 `Get-NetAdapter` 重建（描述 + 去掉 ` #N` 的写法），再和 `powercfg /lastwake`、
+  `powercfg /devicequery wake_armed` 对照；**绝不能在脚本里写死型号名**。历史教训：写死 `AX1650i` 之后，
+  唤醒源变成别的名字 → 每一次唤醒都被判成「不是网卡」，而理由链仍然输出 `NON_MAGIC_WLAN_LINK_LOST`，
+  两条链自相矛盾，回睡静默失效。
+- **`os-` 的 `LINK_LOST` 不能单独当结论**：任何一次恢复都要重新关联/漫游，所以它也会出现在「确定是被要求唤醒」的
+  那次上——本机 12:00 那次是魔法包唤醒（UDP 监听器抓到 magic@+2s），`os-` 给的是 `bssid-changed → LINK_LOST`；
+  12:40 那次同样是魔法包唤醒，`os-` 给的是 `LINK_INTACT`。因此它只作为 `link=` 线索记录。
+- **`WakeSourceType=1` + 空文本 = Windows 未能归因**（`powercfg /lastwake` 会写成「固定功能 / 电源按钮」）。
+  它不等于「真的是定时器」，也不必然等于「真的按了电源键」：本机换网卡后四次自动唤醒都是这个形态。
+  判定里区分：`timer`（Kernel-Power 107 有 ProgrammedWakeTime）、`fixed-feature-nic-suspect`（没定时器且只有网卡是
+  武装的唤醒设备）、`fixed-feature`（还有别的武装设备）。**驱动报了无线专属唤醒原因时以驱动为准**
+  （实测 00:19:55 那次：Windows 说「电源按钮」，驱动 10305 说 `Wake reason: AP Association Lost`，确实是网卡唤醒的，
+  判定按驱动给了 `wifi-nic` 并回睡）。反过来，驱动没报就不能当成网卡唤醒——同一晚 00:31:03 那次 15 秒后醒来的
+  唤醒既没有设备名也没有唤醒信号，只能按 `fixed-feature-nic-suspect` 记录。
+- **`fixed-feature-nic-suspect` 不等于「一定是网卡」**：用户按电源键唤醒时，只要没有别的武装设备，也会落到这个分类。
+  所以默认策略是 `skip`；开 `resleep-if-unattended` 时靠 tier A 的 60 秒 grace（期间会复查输入 tick）来避免和用户抢。
+- **`drv-` 链路经常是空的，原因是武装时机**：`Kernel-Power 42`（进入睡眠）触发的 arm 任务在睡眠瞬间被冻结，
+  往往等**恢复之后**才真正 `logman start`（本机 23:03 入睡、23:05 恢复，落盘的 ETL 只有 23:05:01–23:05:02 共 1.1 秒）；
+  而监听器「用户一动就 DISARM」的策略，正好会在用户停手、机器随后入睡的那一刻把追踪关掉。
+  要让 `drv-` 有数据，必须让追踪在入睡**之前**就已经开着（事件 10305 的关键字掩码 = `0x4000000000004010`，
+  可用 `wevtutil gp Microsoft-Windows-NDIS /ge:true` 复查），并且恢复后不要马上停会话（网卡可能在恢复后几十秒才上报）。
+- **`os-` 的判据是代理指标**（恢复瞬间是否已关联 / BSSID 是否变化 / 网关响应毫秒），阈值 3000 ms 为保守初值。
 - 早起版本的旧文件名已备份：脚本为 `*.bak-name`，数据为 `wake-reason-history.log.bak-name`；旧件在 `_obsolete/`。

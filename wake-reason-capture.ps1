@@ -82,7 +82,14 @@ Set-Content -Path $marker -Value $markerText -Encoding UTF8
 
 "[$($now.ToString('yyyy-MM-dd HH:mm:ss'))] class=$class etl_present=$etlPresent etl_mb=$etlMB wakeTime=$wakeTime source=$src raw=$rawJoined" | Add-Content -Path $history -Encoding UTF8
 if ((Test-Path $history) -and ((Get-Item $history).Length -gt 256KB)) {
-  Get-Content $history | Select-Object -Last 40 | Set-Content -Path $history -Encoding UTF8
+  # materialise first: piping Get-Content into Set-Content on the same path truncates the file
+  # while it is still being read and loses the history
+  $keep = @(Get-Content $history -ErrorAction SilentlyContinue | Select-Object -Last 40)
+  if ($keep.Count -gt 0) {
+    $tmp = $history + '.tmp'
+    Set-Content -Path $tmp -Value $keep -Encoding UTF8
+    Move-Item -Path $tmp -Destination $history -Force
+  }
 }
 
 Remove-Item $xml -Force -ErrorAction SilentlyContinue

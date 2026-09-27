@@ -1,1 +1,1 @@
-v2|time=2026-09-26 17:22:25|ssid=meiyoumima_5G|bssid=c8:bf:4c:ef:cf:bc
+v2|time=2026-09-27 00:49:06|ssid=meiyoumima_5G|bssid=44:df:65:cd:00:00

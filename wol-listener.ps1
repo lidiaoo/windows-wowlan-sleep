@@ -84,14 +84,22 @@ try { Add-Type -Path $DllPath -ErrorAction Stop } catch {
 }
 
 # ---- which MAC to look for? ----
+# Ask for the physical 802.11 adapter, not for a name: the interface name is not stable (a swapped
+# card or a driver reinstall renames it - this box went from 'WLAN' to 'WLAN 5'), and a hardcoded
+# fallback MAC from the card the machine shipped with silently matches nothing after a swap.
 if (-not $AdapterMac) {
   try {
-    $AdapterMac = ((Get-NetAdapter -Name 'WLAN*' -ErrorAction SilentlyContinue | Select-Object -First 1).MacAddress) -replace '-', ''
+    $wa = @(Get-NetAdapter -Physical -ErrorAction SilentlyContinue |
+            Where-Object { $_.MediaType -eq 'Native 802.11' -or $_.InterfaceDescription -match '(?i)wi-fi|wireless|wlan|802.11' } |
+            Sort-Object @{ Expression = { if ($_.Status -eq 'Up') { 0 } else { 1 } } })
+    if ($wa.Count -gt 0) { $AdapterMac = ($wa[0].MacAddress -replace '-', '') }
   } catch {}
 }
-if (-not $AdapterMac) { $AdapterMac = '28D0EA2740CC' }   # fallback: known AX1650i MAC
 $macBytes = @()
-for ($i = 0; $i -lt 12; $i += 2) { $macBytes += [Convert]::ToByte($AdapterMac.Substring($i, 2), 16) }
+if ($AdapterMac -and $AdapterMac.Length -ge 12) {
+  for ($i = 0; $i -lt 12; $i += 2) { $macBytes += [Convert]::ToByte($AdapterMac.Substring($i, 2), 16) }
+}
+if ($macBytes.Count -ne 6) { Log2 'no Wi-Fi adapter MAC found - magic-packet matching DISABLED (marker packets only)' }
 
 $sockets = @()
 foreach ($p in $Ports) {
@@ -135,15 +143,18 @@ while ($true) {
         if ($txt.StartsWith('HERMES-WOL-MARKER')) { Note 'marker' $srcTxt $data.Length }
         continue
       }
-      # magic pattern: 6x FF then >= 8 repetitions of the MAC (16 in a real one)
-      $reps = 0
-      for ($off = 0; $off -le ($data.Length - 6); $off++) {
-        $ok = $true
-        for ($b = 0; $b -lt 6; $b++) { if ($data[$off + $b] -ne $macBytes[$b]) { $ok = $false; break } }
-        if ($ok) { $reps++ ; $off += 5 } else { $reps = 0 }
-        if ($reps -ge 8) { break }
+      # magic pattern: >= 8 repetitions of the MAC in one datagram (a real one repeats it 16x);
+      # skipped entirely when no adapter MAC is known, so marker packets remain the only evidence
+      if ($macBytes.Count -eq 6) {
+        $reps = 0
+        for ($off = 0; $off -le ($data.Length - 6); $off++) {
+          $ok = $true
+          for ($b = 0; $b -lt 6; $b++) { if ($data[$off + $b] -ne $macBytes[$b]) { $ok = $false; break } }
+          if ($ok) { $reps++ ; $off += 5 } else { $reps = 0 }
+          if ($reps -ge 8) { break }
+        }
+        if ($reps -ge 8) { Note 'magic' $srcTxt $data.Length }
       }
-      if ($reps -ge 8) { Note 'magic' $srcTxt $data.Length }
     }
   }
 
