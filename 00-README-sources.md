@@ -45,7 +45,10 @@
 | `wol-listener.ps1` | pkt | 登录常驻（隐藏） | 监听 9/7/67/68/45678 收魔法包/标记包；顺带每 10 秒武装追踪、空闲时触发判定快路径 |
 | `wlan-wake-evidence.ps1` | os | 唤醒时 | 采样链路状态（netsh/ping/WLAN 日志）→ 写 `os-wlanlink-*` |
 | `run-hidden.vbs` | — | 被任务调用 | 隐藏启动器（配合 `wscript.exe` 后任务不再闪黑窗口） |
-| `NativeIdle2.dll` | — | 被脚本加载 | 空闲时间 / 原始输入 tick / 挂起 API 的小辅助（预编译，加载约 60 ms） |
+| `NativeIdle2.dll` | — | 被脚本加载 | 空闲时间 / 原始输入 tick / 挂起 API 的小辅助（预编译，加载约 60 ms；加载失败时脚本会自己从内嵌源码重编译） |
+| `install-tasks.ps1` / `.cmd` | — | 只在新电脑上跑一次 | 预检（文件齐全 + 语法自检）+ 注册 5 个任务 + 加防火墙规则 + 自检；`-DryRun` 只打印不改系统 |
+| `uninstall-tasks.ps1` / `.cmd` | — | 想卸干净时跑一次 | 反向操作：删任务/防火墙规则/进程/ETW；`-PurgeLogs`、`-RemoveToolDir` 可选 |
+| `make-package.ps1` / `.cmd` | — | 想出包给别人时 | 生成只含运行文件的 zip（打完自动再打开 zip 校验一遍） |
 
 ## 4. 计划任务（`taskschd.msc` → 任务计划程序库 → Hermes）
 
@@ -133,3 +136,39 @@ logman stop HermesNdisWake -ets
   可用 `wevtutil gp Microsoft-Windows-NDIS /ge:true` 复查），并且恢复后不要马上停会话（网卡可能在恢复后几十秒才上报）。
 - **`os-` 的判据是代理指标**（恢复瞬间是否已关联 / BSSID 是否变化 / 网关响应毫秒），阈值 3000 ms 为保守初值。
 - 早起版本的旧文件名已备份：脚本为 `*.bak-name`，数据为 `wake-reason-history.log.bak-name`；旧件在 `_obsolete/`。
+
+## 9. 换电脑：一键安装 / 一键卸载 / 打包
+
+最短路径（详细版见 `QUICKSTART.txt`）：双击 `make-package.cmd` → 把 `dist\HermesTools-*.zip` 拷到目标电脑
+→ 解压 → 双击 `install-tasks.cmd` → UAC 点“是” → 看到“全部完成”。
+
+**安装**（`install-tasks.ps1`，`.cmd` 是双击壳，参数原样透传）
+
+- **装到哪**：从任何位置双击 `.cmd` 都会先复制项目到 `%LOCALAPPDATA%\HermesTools` 再按那个目录注册任务。
+  这样从 U盘/下载目录安装时，任务不会指向一个会被拔掉/清理掉的路径。想自定义就 `-InstallDir "C:\路径"`。
+- **预检**：运行文件是否齐全 + 每个 `.ps1` 的语法自检（PS 5.1 读无 BOM 的 `.ps1` 会当 ANSI，中文会变解析错误
+  —— 拷贝不完整必须在安装这一步就报出来，而不是半夜静默失败）+ 报告 `NativeIdle2.dll` 能否加载。
+- **只读打印**网卡 WoL 现状（`*WakeOnMagicPacket` / `*WakeOnPattern`）：换机器最容易漏的就是这两项，
+  但它们是网卡驱动设置，安装脚本只报告、不替你改。
+- **防火墙**：加 5 条入站规则 `Hermes-WoL-UDP-{9,7,67,68,45678}` —— 只放这些 UDP 端口、只有 `powershell.exe`、
+  只来自本地子网。为什么必须：监听器靠 UDP 收魔法包/标记包，而**防火墙开着时入站单播默认被丢弃**，
+  `pkt-` 链会“安静地”永远抓不到东西。不想加就 `-NoFirewallRule`。
+  （本机一直没暴露这个需求，是因为本机 Domain/Private 防火墙本来就是关的，只有 Public 开着。）
+- **自检**：拉起常驻监听器并确认锁文件指向一个活进程 + 用任务里那条完全一样的命令行跑一次
+  `resleep.ps1 -DryRun`（只看判定，不会真的睡）。
+- `-DryRun` 真的什么都不改（连文件都不复制）；此时预检看的是“将要被复制过去的那个源目录”。
+
+**卸载**（`uninstall-tasks.ps1`）
+
+- 删掉：`\Hermes` 下所有 `Hermes-*` 任务、`Hermes-WoL-UDP-*` 防火墙规则、监听器/判定器进程、ETW 会话。
+- **安装目录是从已注册任务的命令行反查的**，不是“本脚本所在目录”：从别处（下载目录、U盘、另一份拷贝）
+  双击卸载照样能卸到真安装；要显式指定就 `-ToolDir "C:\路径"`。有多份历史安装时会把候选列出来。
+- `-PurgeLogs` 清日志/状态文件（脚本保留）；`-PurgeLogs -RemoveToolDir` 连整个目录一起删。
+- 注意：结束进程是按命令行匹配的（`wol-listener.ps1` / `resleep.ps1` / `run-hidden.vbs`），
+  所以同机若存在第二份安装，它的监听器也会被一起结束 —— 2 分钟内会被它自己的兜底任务拉回来。
+
+**打包**（`make-package.ps1`）
+
+- 只打运行脚本 + `run-hidden.vbs` + `NativeIdle2.dll` + 安装/卸载/打包脚本 + 两份文档；
+  日志、`*.etl`、`state-*` 一概不打（那些只对生成它的那台机器有意义，而且很大）。
+- 打完会**再打开 zip 逐条校验**：运行文件缺一个就报错退出，并打印大小与 SHA256（拷完可核对）。

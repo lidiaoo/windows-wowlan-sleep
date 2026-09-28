@@ -1,0 +1,73 @@
+﻿Hermes AutoReSleep —— 换电脑三步（QUICKSTART）
+==============================================
+
+这套东西做什么：机器被魔法包以外的原因唤醒（网卡自己的 AP 关联丢失、漫游、无关的
+模式匹配包……）之后，如果没人在用，就把它自动送回睡眠；真·魔法包唤醒则永不回睡。
+请看 00-README-sources.md 了解每条证据链（drv- / pkt- / os- / dec-）的含义和已知限制。
+
+
+在新电脑上（三步）
+------------------
+1) 把 HermesTools-*.zip 拷过去，随便解压到哪个目录（下载目录、桌面、U盘都行）
+
+2) 双击解压目录里的 install-tasks.cmd → 弹 UAC 点“是”
+   - 它会先把项目复制到 %LOCALAPPDATA%\HermesTools，再按那个目录注册任务，
+     所以之后删掉解压目录、拔掉U盘都不影响运行
+   - 想先看会改什么（不动系统）：
+       install-tasks.cmd -DryRun
+   - 不想让它加防火墙规则：
+       install-tasks.cmd -NoFirewallRule
+
+3) 看到“==================== 全部完成 ====================”就好了
+
+安装脚本会在目标电脑上注册 5 个计划任务（任务计划程序库 → \Hermes）：
+
+  Hermes-AutoResleep        每 2 分钟 + 从睡眠恢复   当前用户(最高权限)  判定兜底 / 回睡
+  Hermes-WolListener        用户登录                当前用户(最高权限)  常驻抓包 + 追踪武装
+  Hermes-WakeReasonArm      进入睡眠(Kernel-Power 42)  SYSTEM           打开 NDIS ETW 追踪
+  Hermes-WakeReasonCapture  从睡眠恢复(PT event 1)     SYSTEM           采集驱动唤醒原因
+  Hermes-WlanWakeEvidence   从睡眠恢复(同上)           SYSTEM           采集链路证据
+
+并加 5 条入站防火墙规则 Hermes-WoL-UDP-{9,7,67,68,45678}：只放这几个 UDP 端口、
+只有 powershell.exe、只来自本地子网。为什么需要它——监听器靠 UDP 收魔法包/标记包，
+防火墙开着时入站单播默认被丢弃，pkt 链会“安静地”永远抓不到东西。
+
+它不改：电源方案、网卡 WoL 高级属性（*WakeOnMagicPacket / *WakeOnPattern）、其它任何任务。
+
+
+前提和限制（换机器最容易踩的）
+------------------------------
+- AutoResleep / WolListener 必须跑在“已登录的用户会话”里，所以只有该用户登录
+  （含锁屏）时才有判定能力；关机的夜里没有判定，那是电源方案的事。
+- 网卡上要开 *WakeOnMagicPacket（否则魔法包唤不醒）；*WakeOnPattern 建议设 0
+  （Intel/Killer 驱动默认是 1，任何模式匹配的包都能把机器弄醒）。这两项属于网卡
+  驱动设置，安装脚本只打印现状、不替你改。
+- 睡眠中唤醒主机的那一个包在网卡固件里就被消费掉了，主机侧抓不到；pkt 链抓到的是
+  回醒之后到达的重复包/标记包，这是硬件限制，不是软件问题。
+- 驱动是否上报唤醒原因由厂商决定（同样一台机器上时有时无），所以才有 os- / pkt- 两条备用链。
+
+
+平时怎么看它有没有在干活
+------------------------
+  %LOCALAPPDATA%\HermesTools\dec-resleep-heartbeat.txt   时间戳在 2.5 分钟内 = 正常
+  %LOCALAPPDATA%\HermesTools\dec-resleep.log             每次判定一行：reason= 结论、src= 用的哪条链
+
+
+卸载（完全回滚）
+----------------
+双击解压目录（或安装目录）里的 uninstall-tasks.cmd → UAC 点“是”
+
+  - 删掉 5 个任务、5 条 Hermes-WoL-UDP-* 防火墙规则、监听器进程、ETW 追踪会话
+  - 日志和目录默认保留；要一起清就加参数：
+      uninstall-tasks.cmd -PurgeLogs                     连日志/状态文件一起删
+      uninstall-tasks.cmd -PurgeLogs -RemoveToolDir      连整个目录一起删
+  - 从哪个目录双击都行：安装目录是从已注册任务的命令行反查出来的
+    （也可以显式指定：uninstall-tasks.cmd -ToolDir "C:\路径"）
+
+
+在本机重新打一个包（给别人/别的电脑用）
+----------------------------------------
+双击 make-package.cmd → 生成 dist\HermesTools-<时间戳>.zip
+包里只有运行脚本、run-hidden.vbs、NativeIdle2.dll、安装/卸载脚本和这两份文档；
+日志、ETW 抓取、state-* 一概不打（那些只对生成它的那台机器有意义）。
+打包脚本会自己再打开 zip 校验一遍：运行文件缺一个就报错。

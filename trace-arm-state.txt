@@ -1,2 +1,2 @@
-﻿[2026-09-27 01:12:01] arm: system entering sleep
-命令成功结束。 错误: 无法识别传来的 GUID 是否为有效的 WMI 数据提供程序。
+﻿[2026-09-28 10:16:47] arm: system entering sleep
+命令成功结束。命令成功结束。

@@ -4,7 +4,9 @@
 #   drv-wakereason-history.log (human readable history, last 40 entries kept)
 # NDIS event 10305 carries "Wake reason: <NDIS_PM_WAKE_REASON_TYPE>".
 $ErrorActionPreference = 'Continue'
-$dir     = 'C:\Users\jianghh\AppData\Local\HermesTools'
+# script-relative on purpose: the project must run from wherever it was copied to
+# (a hardcoded C:\Users\<name>\... path silently breaks on every other machine)
+$dir     = Split-Path -Parent $MyInvocation.MyCommand.Path
 $etl     = Join-Path $dir 'drv-ndis-trace.etl'
 $xml     = Join-Path $dir 'drv-ndis-trace.xml'
 $marker  = Join-Path $dir 'drv-wakereason-last.txt'

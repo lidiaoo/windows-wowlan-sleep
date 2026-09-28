@@ -140,10 +140,13 @@ public static class Native {
   public static bool Suspend() { return SetSuspendState(false, true, false); }
 }
 "@
-if (Test-Path $DllPath) { try { Add-Type -Path $DllPath -ErrorAction Stop } catch {} }
-else {
+# A shipped prebuilt DLL that fails to load (wrong bitness, blocked, truncated copy) must not
+# leave the script without the native helper - try to compile it from the source above instead.
+$helperOk = $false
+if (Test-Path $DllPath) { try { Add-Type -Path $DllPath -ErrorAction Stop; $helperOk = $true } catch {} }
+if (-not $helperOk) {
   try { Add-Type -TypeDefinition $src -OutputAssembly $DllPath -ErrorAction Stop } catch {}
-  try { Add-Type -Path $DllPath -ErrorAction Stop } catch { try { Add-Type -TypeDefinition $src -ErrorAction Stop } catch {} }
+  try { Add-Type -Path $DllPath -ErrorAction Stop; $helperOk = $true } catch { try { Add-Type -TypeDefinition $src -ErrorAction Stop; $helperOk = $true } catch {} }
 }
 
 # ---- ETW trace control ----

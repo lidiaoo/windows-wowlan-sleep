@@ -1,1 +1,1 @@
-2026-09-27 08:42:35  SKIP  reason=wake-source-fixed-feature-nic-suspect+reason-unknown-idle-2s-of-900s  wake=fixed-feature-nic-suspect@09-27 08:42:26  idle=2s
+2026-09-28 13:27:22  SKIP  reason=wake-source-fixed-feature-nic-suspect+reason-unknown-idle-101s-of-900s+display-in-use  wake=fixed-feature-nic-suspect@09-28 10:18:54  idle=101s

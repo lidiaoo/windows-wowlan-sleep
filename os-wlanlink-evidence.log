@@ -1,6 +1,9 @@
-﻿2026-09-27 00:20:00  class=LINK_INTACT why= gws=692 ssid=meiyoumima_5G bssid=c8:bf:4c:ef:cf:bc pre= ev=8000x1,8003x1,11000x1,11001x1,11004x1,11010x1
-2026-09-27 00:31:07  class=LINK_INTACT why= gws=34 ssid=meiyoumima_5G bssid=44:df:65:cd:00:00 pre=44:df:65:cd:00:00 ev=
-2026-09-27 00:42:48  class=LINK_INTACT why= gws=109 ssid=meiyoumima_5G bssid=44:df:65:cd:00:00 pre=44:df:65:cd:00:00 ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
-2026-09-27 00:46:46  class=LINK_LOST why=not-associated-at-resume gws=482 ssid= bssid= pre=c8:bf:4c:ef:cf:bc ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
-2026-09-27 00:50:40  class=LINK_INTACT why= gws=24 ssid=meiyoumima_5G bssid=44:df:65:cd:00:00 pre=44:df:65:cd:00:00 ev=
-2026-09-27 08:42:32  class=LINK_LOST why=bssid-changed gws=18 ssid=meiyoumima_5G bssid=c8:bf:4c:ef:cf:bc pre=44:df:65:cd:00:00 ev=
+﻿2026-09-27 10:37:24  class=LINK_LOST why=not-associated-at-resume gws=91 ssid= bssid= pre= ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
+2026-09-27 16:27:22  class=LINK_LOST why=not-associated-at-resume gws=-1 ssid= bssid= pre= ev=11004x1
+2026-09-27 16:35:58  class=LINK_INTACT why= gws=29 ssid=meiyoumima_5G bssid=44:df:65:cd:00:00 pre= ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
+2026-09-27 16:59:51  class=LINK_LOST why=not-associated-at-resume gws=24 ssid= bssid= pre=44:df:65:cd:00:00 ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
+2026-09-27 18:16:36  class=LINK_INTACT why= gws=1543 ssid=meiyoumima_5G bssid=c8:bf:4c:ef:cf:bc pre=c8:bf:4c:ef:cf:bc ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
+2026-09-27 20:43:36  class=LINK_LOST why=not-associated-at-resume gws=20 ssid= bssid= pre=44:df:65:cd:00:00 ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
+2026-09-27 22:57:24  class=LINK_LOST why=not-associated-at-resume gws=31 ssid= bssid= pre=c8:bf:4c:ef:cf:bc ev=8000x1,8001x1,8003x1,11000x1,11001x1,11004x1,11005x1,11010x1
+2026-09-28 09:51:28  class=LINK_INTACT why= gws=60 ssid=meiyoumima_5G bssid=c8:bf:4c:ef:cf:bc pre=c8:bf:4c:ef:cf:bc ev=
+2026-09-28 10:18:59  class=LINK_INTACT why= gws=23 ssid=meiyoumima_5G bssid=c8:bf:4c:ef:cf:bc pre=c8:bf:4c:ef:cf:bc ev=

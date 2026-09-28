@@ -1,7 +1,9 @@
-﻿[2026-09-27 00:20:02] class=NON_MAGIC_AP_ASSOC_LOST reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 00:19:55 source=resleep-decision
-[2026-09-27 00:20:02] class=NON_MAGIC_AP_ASSOC_LOST reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 00:19:55 source=resleep-decision
-[2026-09-27 00:32:00] class=NO_DATA_EXPECTED_NON_NIC reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 00:31:03 source=resleep-decision
-[2026-09-27 00:42:50] class=NON_MAGIC_AP_ASSOC_LOST reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 00:42:43 source=resleep-decision
-[2026-09-27 00:49:05] class=NON_MAGIC_AP_ASSOC_LOST reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 00:46:41 source=resleep-decision
-[2026-09-27 00:50:41] class=MAGIC_PACKET reason-src=udp-listener udp=magic@+0s wakeTime=2026-09-27 00:50:36 source=resleep-decision
-[2026-09-27 08:42:33] class=NO_DATA_EXPECTED_NON_NIC reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 08:42:26 source=resleep-decision
+﻿[2026-09-27 10:37:26] class=NO_DATA_EXPECTED_NON_NIC reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 10:37:19 source=resleep-decision
+[2026-09-27 16:27:18] class=NO_DATA_EXPECTED_NON_NIC reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 16:27:02 source=resleep-decision
+[2026-09-27 16:35:58] class=NO_DATA reason-src=ndis-marker-or-none udp= wakeTime=2026-09-27 16:35:49 source=resleep-decision
+[2026-09-27 16:59:52] class=NON_MAGIC_WLAN_LINK_LOST reason-src=wlan-evidence udp= wakeTime=2026-09-27 16:59:46 source=resleep-decision
+[2026-09-27 20:43:37] class=NON_MAGIC_WLAN_LINK_LOST reason-src=wlan-evidence udp= wakeTime=2026-09-27 20:43:31 source=resleep-decision
+[2026-09-27 22:57:24] class=NON_MAGIC_WLAN_LINK_LOST reason-src=wlan-evidence udp= wakeTime=2026-09-27 22:57:17 source=resleep-decision
+[2026-09-28 09:51:29] class=NO_DATA reason-src=ndis-marker-or-none udp= wakeTime=2026-09-28 09:51:22 source=resleep-decision
+[2026-09-28 10:19:00] class=NO_DATA_EXPECTED_NON_NIC reason-src=ndis-marker-or-none udp= wakeTime=2026-09-28 10:18:54 source=resleep-decision
+[2026-09-28 10:19:00] class=NO_DATA_EXPECTED_NON_NIC reason-src=ndis-marker-or-none udp= wakeTime=2026-09-28 10:18:54 source=resleep-decision

@@ -2,7 +2,9 @@
 # Arms an NDIS ETW session so the miniport's wake-reason event (10305) is recorded
 # while the machine sleeps. Nothing is logged during S3, so the ETL stays tiny.
 $ErrorActionPreference = 'Continue'
-$dir     = 'C:\Users\jianghh\AppData\Local\HermesTools'
+# script-relative on purpose: the project must run from wherever it was copied to
+# (a hardcoded C:\Users\<name>\... path silently breaks on every other machine)
+$dir     = Split-Path -Parent $MyInvocation.MyCommand.Path
 $etl     = Join-Path $dir 'drv-ndis-trace.etl'
 $session = 'HermesNdisWake'
 $state   = Join-Path $dir 'trace-arm-state.txt'
